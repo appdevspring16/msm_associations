@@ -43,3 +43,4 @@ gem 'rspec-rails', group: [:test, :development]
 gem 'capybara', group: [:test, :development]
 gem 'quiet_assets', group: [:test, :development]
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'hirb'
