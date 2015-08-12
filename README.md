@@ -257,3 +257,25 @@ Neat!
 For each one-to-many relationship in our application (there are three: director-movies, movie-characters, actor-characters), add the `belongs_to` and `has_many` association helpers to the models.
 
 Then, in all of your views, replace messy `.find_by(...)` and `.where(...)`s with clean `.director`, `.movies`, etc.
+
+### has_many/through
+
+After you have established all of your one-to-many association helper methods, you can also add many-to-many helper methods:
+
+    class Movie < ActiveRecord::Base
+       ...
+
+       has_many :characters
+       has_many :actors, :through => :characters
+    end
+
+This will allow you to call `.actors` directly on any movie object, and it will walk through the characters table, assemble the collection of corresponding actors, and return it to you!
+
+Similarly,
+
+    class Actor < ActiveRecord::Base
+       ...
+
+       has_many :characters
+       has_many :movies, :through => :characters
+    end
