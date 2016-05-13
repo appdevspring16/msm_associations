@@ -3,8 +3,6 @@ source 'http://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -30,18 +28,35 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
+  gem "dotenv-rails"
+  gem "factory_girl_rails"
+  gem "pry-byebug"
+  gem "pry-rails"
+  gem "rspec-rails"
 end
 
 group :development do
+  gem "administrate"
+  gem "awesome_print"
   gem "better_errors"
   gem "binding_of_caller"
+  gem "letter_opener"
+  gem "quiet_assets"
+  gem "sqlite3"
 end
 
+group :production do
+  gem "pg"
+  gem "rails_12factor"
+end
 
-gem 'rspec-rails', group: [:test, :development]
-gem 'capybara', group: [:test, :development]
-gem 'quiet_assets', group: [:test, :development]
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+group :test do
+  gem "capybara"
+  gem "database_cleaner"
+  gem "percy-capybara"
+  gem "shoulda-matchers"
+  gem "webmock"
+end
