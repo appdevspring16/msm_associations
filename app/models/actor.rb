@@ -1,5 +1,6 @@
 class Actor < ActiveRecord::Base
   has_many :Characters
+  has_many :Movies, :through => :Characters
 
   validates :name, presence: true, uniqueness: { scope: :dob,
     message: "should happen once per dob" }

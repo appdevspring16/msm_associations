@@ -1,6 +1,7 @@
 class Movie < ActiveRecord::Base
   belongs_to :Director
   has_many :Characters
+  has_many :Actors, :through => :Characters
 
   validates :director_id, presence: true
   validates :title, presence: true, uniqueness: { scope: :year,
