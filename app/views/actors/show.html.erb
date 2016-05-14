@@ -25,6 +25,11 @@
       <dd><%= character %></dd>
       <% end %>
 
+      <dt>Filmography</dt>
+      <% Actor.joins(:Characters).where(id: @actor.id).pluck('characters.name').each do |character| %>
+      <dd> <%= Character.joins(:Movie).where(name: character).pluck('movies.title').first %> </dd>
+      <% end %>
+
     </dl>
 
     <div class="btn-group btn-group-justified">

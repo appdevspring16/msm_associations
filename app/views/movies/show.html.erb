@@ -31,6 +31,11 @@
       <dd><%= character %></dd>
       <% end %>
 
+      <dt>Cast</dt>
+      <% Movie.joins(:Characters).where(title: @movie.title).pluck(:name).each do |character| %>
+      <dd> <%= Character.joins(:Actor).where(name: character).pluck('actors.name').first %> </dd>
+      <% end %>
+
     </dl>
 
     <div class="btn-group btn-group-justified">
@@ -54,7 +59,7 @@
           <!-- Label and input for movie_id -->
           <div class="form-group">
             <label for="movie_id" class="control-label">
-            
+
             </label>
             <input type="hidden" id="movie_id" name="movie_id" placeholder="Movie" class="form-control" value="<%= @movie.id %>">
           </div>
