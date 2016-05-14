@@ -21,7 +21,7 @@
       <dd><%= @movie.image_url %></dd>
 
       <dt>Director</dt>
-      <dd><%= @movie.director_id %></dd>
+      <dd><%= Movie.joins(:Director).where(title: @movie.title).pluck(:name).first %></dd>
 
     </dl>
 
