@@ -11,7 +11,6 @@ In this project, we'll practice associating rows from different tables to one an
 
         rails generate starter:resource director name:string dob:string bio:text image_url:string
 
-1. `rake db:migrate`
 1. Start the server and navigate to [http://localhost:3000/directors](http://localhost:3000/directors); verify that the CRUD resource boilerplate was generated properly.
 1. Quickly add a few rows to the directors table:
 
