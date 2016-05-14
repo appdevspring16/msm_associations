@@ -17,6 +17,14 @@
       <dt>Image url</dt>
       <dd><%= @director.image_url %></dd>
 
+      <dt>Number of movies</dt>
+      <dd><%= Director.joins(:Movies).where(name: @director.name).count %></dd>
+
+      <dt>List of movies</dt>
+      <% Director.joins(:Movies).where(name: @director.name).pluck(:title).each do |movie| %>
+        <dd><%= movie %></dd>
+      <% end %>
+
     </dl>
 
     <div class="btn-group btn-group-justified">
@@ -30,5 +38,66 @@
         Delete
       </a>
     </div>
+    <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+    <!-- Label and input for title -->
+    <div class="form-group">
+      <label for="title" class="control-label">
+        Title
+      </label>
+
+      <input type="text" id="title" name="title" placeholder="Title" class="form-control" value="">
+    </div>
+
+    <!-- Label and input for year -->
+    <div class="form-group">
+      <label for="year" class="control-label">
+        Year
+      </label>
+
+      <input type="text" id="year" name="year" placeholder="Year" class="form-control" value="">
+    </div>
+
+    <!-- Label and input for duration -->
+    <div class="form-group">
+      <label for="duration" class="control-label">
+        Duration
+      </label>
+
+      <input type="text" id="duration" name="duration" placeholder="Duration" class="form-control" value="">
+    </div>
+
+    <!-- Label and input for description -->
+    <div class="form-group">
+      <label for="description" class="control-label">
+        Description
+      </label>
+
+      <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3"></textarea>
+    </div>
+
+    <!-- Label and input for image_url -->
+    <div class="form-group">
+      <label for="image_url" class="control-label">
+        Image url
+      </label>
+
+      <input type="text" id="image_url" name="image_url" placeholder="Image url" class="form-control" value="">
+    </div>
+
+    <!-- Label and input for director_id -->
+    <div class="form-group">
+      <label for="director_id" class="control-label">
+
+      </label>
+
+      <input type="hidden" id="director_id" name="director_id" placeholder="Director" class="form-control" value="<%= @director.id %>">
+
+    </div>
+
+
+    <button class="btn btn-success">
+      Create Movie
+    </button>
   </div>
 </div>
