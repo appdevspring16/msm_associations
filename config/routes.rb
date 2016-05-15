@@ -1,4 +1,55 @@
 Rails.application.routes.draw do
+  # Routes for the Movie resource:
+  # CREATE
+  get "/movies/new", :controller => "movies", :action => "new"
+  post "/create_movie", :controller => "movies", :action => "create"
+
+  # READ
+  get "/movies", :controller => "movies", :action => "index"
+  get "/movies/:id", :controller => "movies", :action => "show"
+
+  # UPDATE
+  get "/movies/:id/edit", :controller => "movies", :action => "edit"
+  post "/update_movie/:id", :controller => "movies", :action => "update"
+
+  # DELETE
+  get "/delete_movie/:id", :controller => "movies", :action => "destroy"
+  #------------------------------
+
+  # Routes for the Director resource:
+  # CREATE
+  get "/directors/new", :controller => "directors", :action => "new"
+  post "/create_director", :controller => "directors", :action => "create"
+
+  # READ
+  get "/directors", :controller => "directors", :action => "index"
+  get "/directors/:id", :controller => "directors", :action => "show"
+
+  # UPDATE
+  get "/directors/:id/edit", :controller => "directors", :action => "edit"
+  post "/update_director/:id", :controller => "directors", :action => "update"
+
+  # DELETE
+  get "/delete_director/:id", :controller => "directors", :action => "destroy"
+  #------------------------------
+
+  # Routes for the Photo resource:
+  # CREATE
+  get "/photos/new", :controller => "photos", :action => "new"
+  post "/create_photo", :controller => "photos", :action => "create"
+
+  # READ
+  get "/photos", :controller => "photos", :action => "index"
+  get "/photos/:id", :controller => "photos", :action => "show"
+
+  # UPDATE
+  get "/photos/:id/edit", :controller => "photos", :action => "edit"
+  post "/update_photo/:id", :controller => "photos", :action => "update"
+
+  # DELETE
+  get "/delete_photo/:id", :controller => "photos", :action => "destroy"
+  #------------------------------
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

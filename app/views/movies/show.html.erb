@@ -1,0 +1,55 @@
+<div class="page-header">
+  <h3>Movie #<%= @movie.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+      <dt>Title</dt>
+      <dd><%= @movie.title %></dd>
+
+      <dt>Year</dt>
+      <dd><%= @movie.year %></dd>
+
+      <dt>Duration</dt>
+      <dd><%= @movie.duration %></dd>
+
+      <dt>Description</dt>
+      <dd><%= @movie.description %></dd>
+
+      <dt>Image url</dt>
+      <dd><%= @movie.image_url %></dd>
+
+      <dt>Director</dt>
+
+      <!-- given code produces on a numerical non-user friendly output: -->
+      <!-- <dd><%= @movie.director_id %></dd> -->
+
+
+      <!-- solution which will display #<Director:0xcca03b0> this object is the entire row-->
+      <!-- <dd><%= Director.find_by(:id => @movie.director_id ) %></dd> -->
+
+      <!-- Specify the field -->
+      <dd>
+        <a href="/directors/<%= @movie.director_id %>">
+          <!-- pay close attention to this @movie.director_id!!! -->
+          <%= Director.find_by(:id => @movie.director_id ).name %>
+        </a>
+      </dd>
+
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/movies" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/movies/<%= @movie.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_movie/<%= @movie.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>
