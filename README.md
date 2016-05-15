@@ -262,7 +262,7 @@ has_many :movies, :class_name => "Movie", :foreign_key => "director_id"
 This line tells Rails:
 
  - `:movies`: Define a method called `.movies` for all director objects.
- - `:class_name => "Movie"`: When someone invokes `.movies` on a director, go fetch a result from the movies table.
+ - `:class_name => "Movie"`: When someone invokes `.movies` on a director, go fetch results from the movies table.
  - `:foreign_key => "director_id"`: Search for the director's id in the `director_id` column of the movies table.
 
 This is exactly what we were doing by hand with
