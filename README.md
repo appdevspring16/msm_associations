@@ -2,6 +2,8 @@
 
 In this project, we'll practice associating rows from different tables to one another.
 
+Our goal will be to build something that works like [this target](http://msm-associations-target.herokuapp.com/).
+
 ## Setup
 
 1. Clone and open the code.
@@ -312,3 +314,9 @@ class Actor < ActiveRecord::Base
    has_many :movies, :through => :characters
 end
 ```
+
+You may or may not need these many-to-many helper methods in this project, but it's nice to know you can easily add them.
+
+## Solution
+
+Once you've struggled for a while, it's okay to peek at [one possible solution](https://github.com/appdevspring16/msm_associations_solutions/commits/master).
