@@ -4,6 +4,8 @@ In this project, we'll practice associating rows from different tables to one an
 
 Our goal will be to build something that works like [this target](http://msm-associations-target.herokuapp.com/).
 
+There is a Getting Started video on Canvas.
+
 ## Setup
 
 1. Clone and open the code.
