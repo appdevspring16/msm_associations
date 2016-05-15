@@ -2,7 +2,7 @@
 
 In this project, we'll practice associating rows from different tables to one another.
 
-Our goal will be to build something that works like [this target](http://msm-associations-target.herokuapp.com/) (ignore the pagination at the bottom of the characters index -- but think about how you would go about it if you had to).
+Our goal will be to build something that works like [this target](http://msm-associations-target.herokuapp.com/) (ignore the pagination links at the bottom of the characters index -- but think about how you would go about it if you had to).
 
 There is a Getting Started video on Canvas.
 
