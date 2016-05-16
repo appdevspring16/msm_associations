@@ -26,6 +26,18 @@
           <%= Director.find_by(:id => @movie.director_id).name %>
         </a>
       </dd>
+
+      <dt>Actors</dt>
+      <dd>
+        <ul class="list-group">
+          <% Character.where(:movie_id => @movie.id).each do |character| %>
+          <li class="list-group-item">
+            <%= Actor.find_by(:id => character.actor_id).name %>
+          </li>
+          <% end %>
+        </ul>
+      </dd>
+
     </dl>
 
     <div class="btn-group btn-group-justified">
