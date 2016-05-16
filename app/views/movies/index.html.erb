@@ -20,7 +20,7 @@
 
       <% @movies.each do |movie| %>
       <tr>
-        <td><img src="<%= movie.image_url %>"></td>
+        <td><img src="<%= movie.image_url %>" width="75"></td>
         <td><%= movie.title %></td>
         <td><%= Director.find_by(:id => movie.director_id).name %></td>
         <td><%= movie.year %></td>

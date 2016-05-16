@@ -1,23 +1,21 @@
 <div class="page-header">
-  <h3>Actor #<%= @actor.id %></h3>
+  <h1><%= @actor.name %></h1>
 </div>
 
 <div class="row">
   <div class="col-md-12">
     <dl class="dl-horizontal">
-      <dt>Name</dt>
-      <dd><%= @actor.name %></dd>
 
-      <dt>Dob</dt>
+      <dt>Dob:</dt>
       <dd><%= @actor.dob %></dd>
 
-      <dt>Bio</dt>
+      <dt>Bio:</dt>
       <dd><%= truncate(@actor.bio) %></dd>
 
-      <dt>Image url</dt>
-      <dd><%= @actor.image_url %></dd>
+      <dt>Image:</dt>
+      <dd><img src="<%= @actor.image_url %>" width="100"></dd></dd>
 
-      <dt>Characters</dt>
+      <dt>Characters:</dt>
       <dd>
         <ul class="list-group">
           <% Character.where(:actor_id => @actor.id).each do |character| %>

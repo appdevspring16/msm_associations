@@ -1,12 +1,10 @@
 <div class="page-header">
-  <h3>Director #<%= @director.id %></h3>
+  <h1><%= @director.name %></h1>
 </div>
 
 <div class="row">
   <div class="col-md-12">
     <dl class="dl-horizontal">
-      <dt>Name:</dt>
-      <dd><%= @director.name %></dd>
 
       <dt>Dob:</dt>
       <dd><%= @director.dob %></dd>
@@ -23,11 +21,15 @@
       <dt>Filmography:</dt>
       <dd>
         <ul class="list-group">
-          <% Movie.where(:director_id => @director.id).each do |filmed| %>
+          <% @director.movies.each do |movie| %>
           <li class="list-group-item">
-            <%= filmed.title %> (<%= filmed.year %>)
+            <a href="/movies/<%= movie.id %>">
+              <%= movie.title %>
+            </a>
+            (<%= movie.year %>)
           </li>
           <% end %>
+
           <li class="list-group-item">
             <form action="/create_movie" method="post">
               <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">

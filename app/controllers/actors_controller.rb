@@ -5,6 +5,7 @@ class ActorsController < ApplicationController
 
   def show
     @actor = Actor.find(params[:id])
+    @movie = Movie.new
   end
 
   def new
