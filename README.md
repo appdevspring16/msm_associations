@@ -29,6 +29,10 @@ There is a Getting Started video on Canvas.
 
  2. If you are in `rails console` and then make a change to a model (for example, you add a validation or fix a syntax error), then, annoyingly, **you have to `exit` and then relaunch `rails console`** to pick up the new logic.
 
+## Solution
+
+Once you've struggled for a while, it's okay to peek at [one possible solution](https://github.com/appdevspring16/msm_associations_solutions/commits/master).
+
 ## Associating Directors and Movies
 
 ### Can X have many of Y? Can Y have many of X?
@@ -332,7 +336,3 @@ end
 ```
 
 You may or may not need these many-to-many helper methods in this project, but it's nice to know you can easily add them.
-
-## Solution
-
-Once you've struggled for a while, it's okay to peek at [one possible solution](https://github.com/appdevspring16/msm_associations_solutions/commits/master).
