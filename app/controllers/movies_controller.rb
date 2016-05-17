@@ -1,10 +1,12 @@
 class MoviesController < ApplicationController
   def index
     @movies = Movie.all
+    @directors = Director.all
   end
 
   def show
     @movie = Movie.find(params[:id])
+    @director = Director.find_by({:id => @movie.director_id})
   end
 
   def new
