@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Character resource:
+  # CREATE
+  get "/characters/new", :controller => "characters", :action => "new"
+  post "/create_character", :controller => "characters", :action => "create"
+
+  # READ
+  get "/characters", :controller => "characters", :action => "index"
+  get "/characters/:id", :controller => "characters", :action => "show"
+
+  # UPDATE
+  get "/characters/:id/edit", :controller => "characters", :action => "edit"
+  post "/update_character/:id", :controller => "characters", :action => "update"
+
+  # DELETE
+  get "/delete_character/:id", :controller => "characters", :action => "destroy"
+  #------------------------------
+
   # Routes for the Actor resource:
   # CREATE
   get "/actors/new", :controller => "actors", :action => "new"
