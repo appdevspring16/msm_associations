@@ -23,12 +23,12 @@
       <dt>Director</dt>
       <dd>
         <a href="/directors/<%= @movie.director_id %>">
-          <%= Director.find_by(:id => @movie.director_id).name %>
+          <%= @movie.director.name %>
         </a>
       </dd>
 
       <dt>Number of Characters</dt>
-      <dd><%= Character.where(:movie_id => @movie.id).count %></dd>
+      <dd><%= @movie.characters.count %></dd>
 
     </dl>
 
@@ -47,7 +47,7 @@
 </div>
 
 <ul>
-  <% Character.where(:movie_id => @movie.id).each do |character| %>
+  <% @movie.characters.each do |character| %>
     <li><a href="/characters/<%= character.id %>"><%= character.name %></a></li>
   <% end %>
 </ul>
