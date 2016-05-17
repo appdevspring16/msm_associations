@@ -73,6 +73,7 @@
         <!-- <input type="text" id="director_id" name="director_id" placeholder="Director" class="form-control" value="<%= @movie.director_id %>"> -->
 
 
+
         <!-- This select is short form -->
         <%= select_tag(:director_id, options_from_collection_for_select(Director.all, :id, :name, @movie.director_id ), :class => "form-control") %>
         <!-- <%= select_tag(tell the select tag what should the name be, what are all of options to include in the loop (the array to loop across, that value should be used in the lookup, the content the user actually sees, default or prepopulate value), :class => "form-control") -->
