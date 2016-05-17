@@ -18,7 +18,7 @@
       <dt>Characters:</dt>
       <dd>
         <ul class="list-group">
-          <% Character.where(:actor_id => @actor.id).each do |character| %>
+          <% @actor.characters.each do |character| %>
           <li class="list-group-item">
             <%= character.name %>
           </li>

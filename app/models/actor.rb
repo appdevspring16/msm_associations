@@ -1,4 +1,5 @@
 class Actor < ActiveRecord::Base
+  has_many(:characters, :class_name => "Character", :foreign_key => "Actor_id")
  #  Actor:
  # - name: must be present; must be unique in combination with dob
  validates :name, :presence => true, :uniqueness => { :scope => :dob }

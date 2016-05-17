@@ -13,8 +13,6 @@
         <th>Title</th>
         <th>Director</th>
         <th>Year</th>
-        <th>Duration</th>
-        <th>Description</th>
         <th>Actions</th>
       </tr>
 
@@ -22,14 +20,19 @@
       <tr>
         <td><img src="<%= movie.image_url %>" width="75"></td>
         <td><%= movie.title %></td>
-        <td><%= Director.find_by(:id => movie.director_id).name %></td>
-        <td><%= movie.year %></td>
-        <td><%= movie.duration %></td>
-        <td><%= movie.description %></td>
         <td>
+          <a href="/directors/<%= movie.director_id %>" class="btn btn-link">
+            <%= movie.director.name %>
+          </a>
+        </td>
+        <td>
+          <%= movie.year %></td>
+        <td>
+          <div class="btn-group-vertical">
           <a href="/movies/<%= movie.id %>" class="btn btn-primary">Show</a>
           <a href="/movies/<%= movie.id %>/edit" class="btn btn-warning">Edit</a>
           <a href="/delete_movie/<%= movie.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </div>
         </td>
       </tr>
       <% end %>
