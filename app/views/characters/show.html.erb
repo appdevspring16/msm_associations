@@ -1,0 +1,37 @@
+<div class="page-header">
+  <h3>Character #<%= @character.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+      <dt>Movie</dt>
+      <dd><%= Movie.find_by(id: @character.movie_id).title %></dd>
+
+      <dt>Actor</dt>
+      <dd><%= Actor.find_by(id: @character.actor_id).name %></dd>
+
+      <dt>Name</dt>
+      <dd><%= @character.name %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/characters" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/characters/<%= @character.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_character/<%= @character.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <li><a href="/movie/new.html.erb">Add New Movie</a></li>
+  <li><a href="/actor/new.html.erb">Add New Actor</a></li>
+</div>
