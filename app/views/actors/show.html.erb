@@ -17,6 +17,9 @@
       <dt>Image url</dt>
       <dd><%= @actor.image_url %></dd>
 
+      <dt>Number of characters played</dt>
+      <dd><%= Character.where(:actor_id=>@actor.id).count%></dd>
+
     </dl>
 
     <div class="btn-group btn-group-justified">
@@ -30,5 +33,13 @@
         Delete
       </a>
     </div>
+    <ul>
+      <li><h3>Characters</h3></li>
+      <% Character.where(:actor_id=>@actor.id).each do |character|%>
+      <li>
+      <%=character.name%>
+      </li>
+      <%end%>
+    </ul>
   </div>
 </div>

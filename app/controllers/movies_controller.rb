@@ -9,6 +9,7 @@ class MoviesController < ApplicationController
 
   def new
     @movie = Movie.new
+    @character=Character.new
   end
 
   def create
