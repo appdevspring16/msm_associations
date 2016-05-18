@@ -18,7 +18,9 @@
       <% @characters.each do |character| %>
       <tr>
         <td><%= Movie.find_by(:id => character.movie_id).title %></td>
-        <td><%= Actor.find_by(:id => character.actor_id).name %></td>
+
+        <!-- notice the try method below, it will get you beyond the nil error so you can see the nil field and fix it -->
+        <td><%= Actor.find_by(:id => character.actor_id).try(:name) %></td>
         <td><%= character.name %></td>
         <td>
           <a href="/characters/<%= character.id %>" class="btn btn-primary">Show</a>

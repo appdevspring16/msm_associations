@@ -34,6 +34,9 @@
         <a href="/directors/<%= @movie.director_id %>">
           <!-- pay close attention to this @movie.director_id!!! -->
           <%= Director.find_by(:id => @movie.director_id ).name %>
+
+          <!-- alternate short form -->
+          <%= @movie.director.name %>
         </a>
       </dd>
 
@@ -53,3 +56,27 @@
     </div>
   </div>
 </div>
+
+
+<ul>
+  <% Character.where(:movie_id => @movie.id).each do |character| %>
+  <li><%= character.name %></li>
+  <% end %>
+
+
+  <!-- for this exercise we first asked character to pull the actor id by order of operation then give that to the actor on id -->
+  <% Character.where(:movie_id => @movie.id).each do |character| %>
+  <li><%= Actor.find_by(:id => character.actor_id).name %></li>
+  <% end %>
+  <!-- check out a short cut in the model character for calling other methods that are not native to the model character -->
+
+
+  <!-- short cut2 see model -->
+  <% @movie.characters.each do |character| %>
+  <li>
+    <%= character.actor.name %>
+    (<%= character.name %>)
+  </li>
+  <% end %>
+
+</ul>
