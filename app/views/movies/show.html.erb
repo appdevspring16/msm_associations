@@ -15,14 +15,15 @@
       <dd><%= @movie.duration %></dd>
 
       <dt>Description</dt>
-      <dd><%= @movie.description %></dd>
+      <dd><%= truncate(@movie.description) %></dd>
 
       <dt>Image</dt>
       <dd><img src="<%= @movie.image_url %>" alt="" />
         </dd>
 
       <dt>Director</dt>
-      <dd><%= @director.name %></dd>
+      <dd><a href="/directors/<%= @director.id %>"><%= @director.name %></a>
+        </dd>
 
     </dl>
 
