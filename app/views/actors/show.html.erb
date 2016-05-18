@@ -5,6 +5,9 @@
 <div class="row">
   <div class="col-md-12">
     <dl class="dl-horizontal">
+      <dt>Image</dt>
+      <dd><img src="<%= @actor.image_url %>"></dd>
+
       <dt>Name</dt>
       <dd><%= @actor.name %></dd>
 
@@ -14,8 +17,17 @@
       <dt>Bio</dt>
       <dd><%= @actor.bio %></dd>
 
-      <dt>Image url</dt>
-      <dd><%= @actor.image_url %></dd>
+      <dt>Number of Movies</dt>
+      <dd><%= Character.where(:actor_id => @actor.id).count %></dd>
+
+      <dt>Filmography</dt>
+      <dd>
+        <ul>
+          <% Character.where(:actor_id => @actor.id).each do |character| %>
+            <li><a href="/movies/<%= character.movie_id%>"><%= Movie.find_by(:id=>character.movie_id).title %></a></li>
+          <% end %>
+        </ul>
+      </dd>
 
     </dl>
 

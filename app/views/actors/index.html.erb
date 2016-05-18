@@ -9,19 +9,19 @@
   <div class="col-md-12">
     <table class="table table-striped table-hover">
       <tr>
+        <th>Image</th>
         <th>Name</th>
         <th>Dob</th>
         <th>Bio</th>
-        <th>Image url</th>
         <th>Actions</th>
       </tr>
 
       <% @actors.each do |actor| %>
       <tr>
+        <td><img src="<%= actor.image_url %>"></td>
         <td><%= actor.name %></td>
         <td><%= actor.dob %></td>
         <td><%= actor.bio %></td>
-        <td><%= actor.image_url %></td>
         <td>
           <a href="/actors/<%= actor.id %>" class="btn btn-primary">Show</a>
           <a href="/actors/<%= actor.id %>/edit" class="btn btn-warning">Edit</a>
