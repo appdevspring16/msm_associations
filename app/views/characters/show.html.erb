@@ -16,7 +16,8 @@
         <a href="/actors/<%=@character.actor_id%>"><%= Actor.find_by(:id => @character.actor_id).name %> </a>
           </dd>
       <dt>Name</dt>
-      <dd><%= @character.name %></dd>
+      <dd>
+     <%= @character.name %></dd>
 
     </dl>
 
