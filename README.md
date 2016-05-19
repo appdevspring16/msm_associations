@@ -2,43 +2,26 @@
 
 In this project, we'll practice associating rows from different tables to one another.
 
-Our goal will be to build something that works like [this target](http://msm-associations-target.herokuapp.com/). (Don't worry about styling -- focus on functionality only. Also, ignore the pagination links at the bottom of the characters index -- but think about how you would go about it if you had to.)
-
-There is a Getting Started video on Canvas.
-
 ## Setup
 
- 1. Clone and open the code.
- 1. Add the [starter_generators](https://gist.github.com/raghubetina/80d3cf2cf82666ed1c0f) gem.
- 1. `bundle install`
- 1. Generate the Director resource:
+1. Clone and open the code.
+1. Add the [starter_generators](https://gist.github.com/rbetina/80d3cf2cf82666ed1c0f) gem.
+1. `bundle install`
+1. Generate the Director resource:
 
         rails generate starter:resource director name:string dob:string bio:text image_url:string
 
- 1. `rake db:migrate`
- 1. Start the server and navigate to [http://localhost:3000/directors](http://localhost:3000/directors); verify that the CRUD resource boilerplate was generated properly.
- 1. Quickly add a few rows to the directors table:
+1. Start the server and navigate to [http://localhost:3000/directors](http://localhost:3000/directors); verify that the CRUD resource boilerplate was generated properly.
+1. Quickly a few rows to the directors table:
 
         rake db:seed:directors
-        
-## Two important notes about `rails console`
-
- 1. Sometimes when the output of a command is very long, `rails console` is going to paginate it for you. You will have a `:` prompt when this is true, and you can hit <kbd>Return</kbd> to scroll through line by line, or <kbd>Space</kbd> to scroll through page by page.
-    
-    **To get back to the regular prompt so that you can enter your next command, just hit <kbd>q</kbd>.**
-
- 2. If you are in `rails console` and then make a change to a model (for example, you add a validation or fix a syntax error), then, annoyingly, **you have to `exit` and then relaunch `rails console`** to pick up the new logic.
-
-## Solution
-
-Once you've struggled for a while, it's okay to peek at [one possible solution](https://github.com/appdevspring16/msm_associations_solutions/commits/master).
 
 ## Associating Directors and Movies
 
 ### Can X have many of Y? Can Y have many of X?
 
- - Can a director have many movies? Yes
- - Can a movie have many directors? No (in this app, anyway)
+Can a director have many movies? Yes
+Can a movie have many directors? No (in this app, anyway)
 
 Therefore, we have a one (director) to many (movies) relationship.
 
@@ -55,10 +38,6 @@ So, let's now generate the Movie resource with all of the columns it needs:
     rails generate starter:resource movie title:string year:integer duration:integer description:text image_url:string director_id:integer
 
 The `director_id` column is intended to hold the `id` of a row from over in the directors table. Such columns are called **foreign key columns**.
-
-Execute the newly generated instructions to add the movies table:
-
-    rake db:migrate
 
 Quickly add a few rows to the movies table:
 
@@ -84,7 +63,7 @@ Let's add the following validation rules to guard our tables against bogus rows 
 
 ### Querying practice
 
-In `rails console`, answer the following questions. Refer to your [CRUD with Ruby cheatsheet](https://gist.github.com/raghubetina/bb6336ead63080be2ff4#querying), and/or the [offical RailsGuide on ActiveRecord querying](http://guides.rubyonrails.org/active_record_querying.html).
+In `rails console`, answer the following questions. Refer to your [CRUD with Ruby cheatsheet](https://gist.github.com/rbetina/bb6336ead63080be2ff4#querying), and/or the [offical RailsGuide on ActiveRecord querying](http://guides.rubyonrails.org/active_record_querying.html).
 
 For each question, see if you can craft a single Ruby expression that returns the final answer when entered into `rails console`.
 
@@ -102,9 +81,7 @@ For each question, see if you can craft a single Ruby expression that returns th
  1. Currently, on the movies index page and a movie's show page, the code that the generator wrote for you is showing users raw director ID numbers. This is bad. Replace the id number with the name of the director.
  1. On the new and edit movie pages, let's give our users a dropdown box to select a director, rather than having to type in a valid ID number. Let's use the `select_tag` view helper method to make this slightly easier than writing the raw HTML `<select>` and `<option>` tags by hand:
 
-```erb
-<%= select_tag(:director_id, options_from_collection_for_select(Director.all, :id, :name, @movie.director_id), :class => "form-control") %>
-```
+        <%= select_tag(:director_id, options_from_collection_for_select(Director.all, :id, :name, @movie.director_id), :class => "form-control") %>
 
  1. Let's also add a link to the new director form in case the director doesn't exist yet.
  1. On a director's show page, display a count of how many movies belong to that director.
@@ -119,9 +96,7 @@ Let's now add Actors to our application. Our end goal is to show a cast on each 
 
     rails generate starter:resource actor name:string dob:string bio:text image_url:string
 
-`rake db:migrate` and navigate to [http://localhost:3000/actors](http://localhost:3000/actors) and verify that the CRUD resource boilerplate was generated properly.
-    
-Then, quickly add a few rows:
+`rake db:migrate` and navigate to [http://localhost:3000/actors](http://localhost:3000/actors) and verify that the CRUD resource boilerplate was generated properly. Then, quickly add a few rows:
 
     rake db:seed:actors
 
@@ -129,8 +104,8 @@ Then, quickly add a few rows:
 
 Ask yourself the standard two questions:
 
- - Can a movie be associated to many actors? Yes
- - Can an actor be associated to many movies? Yes
+Can a movie be associated to many actors? Yes
+Can an actor be associated to many movies? Yes
 
 So, we know we have a Many-to-Many on our hands.
 
@@ -180,9 +155,7 @@ So, we should first go through the steps we went through above when we were sett
 1. Currently, on the characters index page and a character's show page, the code that the generator wrote for you is showing users raw movie ID numbers. This is bad. Replace the id number with the title of the movie.
 1. On the new and edit character pages, let's give our users a dropdown box to select a movie, rather than having to type in a valid ID number. Let's use the `select_tag` view helper method to make this slightly easier than writing the raw HTML `<select>` and `<option>` tags by hand:
 
-```erb
-<%= select_tag(:movie_id, options_from_collection_for_select(Movie.all, :id, :title, @character.movie_id), :class => "form-control")
-```
+       <%= select_tag(:movie_id, options_from_collection_for_select(Movie.all, :id, :title, @character.movie_id), :class => "form-control")
 
 1. Let's also add a link to the new movie form in case the movie doesn't exist yet.
 1. On a movie's show page, display a count of how many characters belong to that movie.
@@ -207,15 +180,11 @@ Now that we have an understanding of how to establish one-to-manies and many-to-
 
 Let's say I have a movie in a variable `m`. It is annoying and error prone to, whenever I want the director associated with a movie, have to type
 
-```ruby
-d = Director.find_by({ :id => m.director_id })
-```
+    d = Director.find_by({ :id => m.director_id })
 
 Wouldn't it be great if I could just type
 
-```ruby
-d = m.director
-```
+    d = m.director
 
 and it would know how to go look up the corresponding row in the directors table based on the movie's `director_id`?
 
@@ -223,9 +192,7 @@ Unfortunately, I can't, because `.director` isn't a method that `Movie` objects 
 
 Fortunately, since domain modeling and associations are at the heart of every application's power, Rails makes it really easy to define such a method. Just go to the `Movie` model and add a line like this:
 
-```ruby
-belongs_to :director, :class_name => "Director", :foreign_key => "director_id"
-```
+    belongs_to :director, :class_name => "Director", :foreign_key => "director_id"
 
 This line tells Rails:
 
@@ -235,21 +202,15 @@ This line tells Rails:
 
 This is exactly what we were doing by hand with
 
-```ruby
-Director.find_by({ :id => m.director_id })
-```
+    Director.find_by({ :id => m.director_id })
 
 but we can now use the shorthand of just
 
-```ruby
-m.director
-```
+    m.director
 
 Even better, if you've named your method and foreign key column conventionally (exactly matching the name of the other table), you can use the super-shorthand version:
 
-```ruby
-belongs_to :director
-```
+    belongs_to :director
 
 Neat!
 
@@ -257,49 +218,37 @@ Neat!
 
 Let's say I have a director in a variable `d`. It is annoying and error prone to, whenever I want the movies associated with the director, have to type
 
-```ruby
-a = Movie.where({ :director_id => d.id })
-```
+    a = Movie.where({ :director_id => d.id })
 
 Wouldn't it be great if I could just type
 
-```ruby
-a = d.movies
-```
+    a = d.movies
 
 and it would know how to go look up the corresponding rows in the movies table?
 
-Unfortunately, I can't, because `.movies` isn't a method that `Director` objects know how to perform -- it is undefined.
+Unfortunately, I can't, because `.movies` isn't a method that `Movie` objects know how to perform -- it is undefined.
 
 Fortunately, since domain modeling and associations are at the heart of every application's power, Rails makes it really easy to define such a method. Just go to the `Director` model and add a line like this:
 
-```ruby
-has_many :movies, :class_name => "Movie", :foreign_key => "director_id"
-```
+    has_many :movies, :class_name => "Movie", :foreign_key => "director_id"
 
 This line tells Rails:
 
  - `:movies`: Define a method called `.movies` for all director objects.
- - `:class_name => "Movie"`: When someone invokes `.movies` on a director, go fetch results from the movies table.
+ - `:class_name => "Movie"`: When someone invokes `.movies` on a director, go fetch a result from the movies table.
  - `:foreign_key => "director_id"`: Search for the director's id in the `director_id` column of the movies table.
 
 This is exactly what we were doing by hand with
 
-```ruby
-Movie.where({ :director_id => d.id })
-```
+    Movie.where({ :director_id => d.id })
 
 but we can now use the shorthand of just
 
-```ruby
-d.movies
-```
+    d.movies
 
 Even better, if you've named your method and foreign key column conventionally (exactly matching the name of the other table), you can use the super-shorthand version:
 
-```ruby
-has_many :movies
-```
+    has_many :movies
 
 Neat!
 
@@ -313,26 +262,20 @@ Then, in all of your views, replace messy `.find_by(...)` and `.where(...)`s wit
 
 After you have established all of your one-to-many association helper methods, you can also add many-to-many helper methods:
 
-```ruby
-class Movie < ActiveRecord::Base
-   ...
+    class Movie < ActiveRecord::Base
+       ...
 
-   has_many :characters
-   has_many :actors, :through => :characters
-end
-```
+       has_many :characters
+       has_many :actors, :through => :characters
+    end
 
 This will allow you to call `.actors` directly on any movie object, and it will walk through the characters table, assemble the collection of corresponding actors, and return it to you!
 
 Similarly,
 
-```ruby
-class Actor < ActiveRecord::Base
-   ...
+    class Actor < ActiveRecord::Base
+       ...
 
-   has_many :characters
-   has_many :movies, :through => :characters
-end
-```
-
-You may or may not need these many-to-many helper methods in this project, but it's nice to know you can easily add them.
+       has_many :characters
+       has_many :movies, :through => :characters
+    end
