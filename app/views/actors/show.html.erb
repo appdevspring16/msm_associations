@@ -18,7 +18,7 @@
       <dd><%= @actor.image_url %></dd>
 
       <dt>Number of characters played</dt>
-      <dd><%= Character.where(:actor_id=>@actor.id).count%></dd>
+      <dd><%= @actor.characters.count%></dd>
 
     </dl>
 
@@ -33,11 +33,20 @@
         Delete
       </a>
     </div>
+
+    <ul>
+      <li><h3>Movies</h3></li>
+      <% @actor.characters.each do |character|%>
+      <li><a href="/movies/<%=character.movie_id%>"><%=character.movie.title%></a>
+      (<%=character.name%>)
+      </li>
+      <%end%>
+    </ul>
     <ul>
       <li><h3>Characters</h3></li>
-      <% Character.where(:actor_id=>@actor.id).each do |character|%>
-      <li>
-      <%=character.name%>
+      <% @actor.characters.each do |character|%>
+      <li><a href="/characters/<%=character.id%>"><%=character.name%></a>
+
       </li>
       <%end%>
     </ul>
@@ -45,15 +54,14 @@
 
 
 
-  <div class="page-header">
-    <h3>Add Character</h3>
-  </div>
+
   <div class="row">
     <div class="col-md-12">
       <form action="/create_character" method="post">
         <!-- Hidden input for authenticity token to protect from forgery -->
         <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
+      <h3>add character to actor</h3>
         <!-- Label and input for movie_id -->
         <div class="form-group">
           <label for="movie_id" class="control-label">
@@ -68,7 +76,7 @@
 
         <!-- Label and input for actor_id -->
         <div class="form-group">
-        
+
 
         <input type="hidden"  name="actor_id" placeholder="Name" class="form-control" value="<%= @actor.id %>">
         </div>

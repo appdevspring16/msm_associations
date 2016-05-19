@@ -28,7 +28,7 @@
       </dd>
 
       <dt>Number of Characters</dt>
-      <dd><%=Character.where(:movie_id=>@movie.id).count%></dd>
+      <dd><%=@movie.characters.count%></dd>
 
 
 
@@ -51,8 +51,8 @@
 <ul>
   <li><h3>Actors</h3></li>
   <% @movie.characters.each do |character|%>
-  <li>
-  <%=character.actor.name%>
+  <li><a href="/actors/<%=character.actor_id%>"><%=character.actor.name%></a>
+  (<%=character.name%>)
   </li>
   <%end%>
 </ul>
@@ -60,9 +60,9 @@
 
 <ul>
   <li><h3>Characters</h3></li>
-  <% Character.where(:movie_id=>@movie.id).each do |character|%>
-  <li>
-  <%=character.name%>
+  <% @movie.characters.each do |character|%>
+  <li><a href="/characters/<%=character.id%>"><%=character.name%></a>
+
   </li>
   <%end%>
 </ul>
