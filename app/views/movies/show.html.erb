@@ -73,14 +73,21 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
+      <!-- Label and input for movie_id -->
+      <div class="form-group">
 
+        <input type="hidden" name="movie_id" value="<%=@movie.id%>">
+      </div>
 
       <!-- Label and input for actor_id -->
       <div class="form-group">
         <label for="actor_id" class="control-label">
           Actor
         </label>
-  <%= select_tag(:actor_id, options_from_collection_for_select(Actor.all, :id, :name, @character.actor_id), :class => "form-control")%>
+  <%= select_tag(:actor_id, options_from_collection_for_select(Actor.all, :id, :name), :class => "form-control")%>
+  <p>
+     <a href="/actors/new">add a new actor</a>
+  </p>
 
       </div>
 
@@ -90,7 +97,7 @@
           Name
         </label>
 
-        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @character.name %>">
+        <input type="text" id="name" name="name" placeholder="Name" class="form-control">
       </div>
 
       <button class="btn btn-success">
@@ -98,15 +105,6 @@
       </button>
       or
       <a href="/characters">Cancel</a>
-
-      <!-- Label and input for movie_id -->
-      <div class="form-group">
-        <label for="movie_id" class="control-label">
-          Movie
-        </label>
-
-        <input type="hidden" name="movie_id" value="<%=@character.movie_id%>">
-      </div>
     </form>
   </div>
 </div>
