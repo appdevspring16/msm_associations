@@ -6,10 +6,10 @@
   <div class="col-md-12">
     <dl class="dl-horizontal">
       <dt>Movie</dt>
-      <dd><%= Movie.find(@character.movie_id).title %></dd>
+      <dd><%= @character.movie.title %></dd>
 
       <dt>Actor</dt>
-      <dd><%= Actor.find(@character.actor_id).name %></dd>
+      <dd><%= @character.actor.name %></dd>
 
       <dt>Name</dt>
       <dd><%= @character.name %></dd>

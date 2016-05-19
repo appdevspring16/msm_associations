@@ -5,5 +5,7 @@ validates :movie_id, :presence => true
 validates :actor_id, :presence => true
   #  - name: no rules
 
+belongs_to :actor
+belongs_to :movie
 
 end

@@ -10,6 +10,7 @@ validates :duration, :numericality => { :only_integer => true, :greater_than_or_
   #  - description: no rules
   #  - image_url: no rules
 
-
-
+belongs_to :director, :class_name => "Director", :foreign_key => "director_id"
+has_many :characters
+has_many :actors, :through => :character
 end

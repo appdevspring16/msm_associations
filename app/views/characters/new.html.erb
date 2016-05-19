@@ -33,14 +33,15 @@
         <label for="actor_id" class="control-label">
           Actor
         </label>
-        <input type="text" id="actor_id" name="actor_id" placeholder="Actor" class="form-control" value="<%= @character.movie_id %>">
+        <%= select_tag(:actor_id, options_from_collection_for_select(Actor.all, :id, :name, @character.actor_id), :class => "form-control") %>
+
       </div>
-  
+
 
       <!-- Label and input for name -->
       <div class="form-group">
         <label for="name" class="control-label">
-          Name
+          Character Name
         </label>
 
         <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @character.name %>">
@@ -53,4 +54,13 @@
       <a href="/characters">Cancel</a>
     </form>
   </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-md-12">
+Can't find the movie? <a href="/movies/new">Add one.</a>
+</div>
+<div class="col-md-12">
+Can't find the Actor? <a href="/actors/new">Add one.</a>
+</div>
 </div>
