@@ -25,11 +25,12 @@
       <dt>Image url</dt>
       <dd><%= @movie.image_url %></dd>
 
-
       <dt>Director</dt>
-      <dd><%= @movie.director_id %></dd>
+      <dd>
+        <a href="/directors/<%=@movie.director_id%>">
+          <%= Director.find_by(:id => @movie.director_id).name %></a>
 
-
+      </dd>
     </dl>
 
     <div class="btn-group btn-group-justified">

@@ -40,7 +40,7 @@
 
 
 
-        <td><%= movie.director_id %></td>
+        <td><%= Director.find_by(:id => movie.director_id).name %></td>
 
         <td>
 
