@@ -23,8 +23,8 @@
       <dt>Filmography</dt>
       <dd>
         <ul>
-          <% Character.where(:actor_id => @actor.id).each do |character| %>
-            <li><a href="/movies/<%= character.movie_id%>"><%= Movie.find_by(:id=>character.movie_id).title %></a></li>
+          <% @actor.characters.each do |character| %>
+            <li><a href="/movies/<%= character.movie_id%>"><%= character.movie.title %></a></li>
           <% end %>
         </ul>
       </dd>
