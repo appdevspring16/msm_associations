@@ -1,4 +1,2 @@
 --color
---format documentation
---order default
 --require spec_helper
