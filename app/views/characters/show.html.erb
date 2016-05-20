@@ -1,0 +1,36 @@
+<div class="page-header">
+  <h3>Character #<%= @character.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+      <dt>Movie</dt>
+      <dd>
+        <a href="/movies/<%=@character.movie_id%>">
+        <%=@character.movie.title%></a>
+      </dd>
+
+      <dt>Actor</dt>
+      <dd>
+        <a href="/actors/<%=@character.actor_id%>"><%= @character.actor.name %> </a>
+          </dd>
+      <dt>Name</dt>
+      <dd>
+     <%= @character.name %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/characters" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/characters/<%= @character.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_character/<%= @character.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>
