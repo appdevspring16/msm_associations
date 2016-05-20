@@ -17,11 +17,14 @@
 
       <% @characters.each do |character| %>
       <tr>
-        <td><%= Movie.find_by(:id => character.movie_id).title %></td>
-
+        <!-- <td><%= Movie.find_by(:id => character.movie_id).title %></td> -->
         <!-- notice the try method below, it will get you beyond the nil error so you can see the nil field and fix it -->
-        <td><%= Actor.find_by(:id => character.actor_id).try(:name) %></td>
+        <!-- <td><%= Actor.find_by(:id => character.actor_id).try(:name) %></td> -->
+
+        <td><%= character.movies.title %></td>
+        <td><%= character.actors.name %></td>
         <td><%= character.name %></td>
+        
         <td>
           <a href="/characters/<%= character.id %>" class="btn btn-primary">Show</a>
           <a href="/characters/<%= character.id %>/edit" class="btn btn-warning">Edit</a>
@@ -29,6 +32,11 @@
         </td>
       </tr>
       <% end %>
+
+
+
+
+
     </table>
   </div>
 </div>
