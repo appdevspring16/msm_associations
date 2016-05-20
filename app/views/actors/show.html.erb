@@ -19,11 +19,11 @@
         </dd>
 
       <dt>Number of characters</dt>
-      <dd><%= Character.where(:actor_id => @actor.id).count %></dd>
+      <dd><%= @actor.characters.count %></dd>
 
       <dt>Name of characters</dt>
       <dd>
-        <% Character.where(:actor_id => @actor.id).each do |character| %>
+        <% @actor.characters.each do |character| %>
         <li> <a href="/characters/<%= character.id %>"><%= character.name %></li></a>
         <% end %>
       </dd>
