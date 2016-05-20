@@ -67,6 +67,8 @@ Rails.application.routes.draw do
   get "/delete_director/:id", :controller => "directors", :action => "destroy"
   #------------------------------
 
+  get "/", :controller => "movies", :action => "index"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

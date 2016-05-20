@@ -6,10 +6,10 @@
   <div class="col-md-12">
     <dl class="dl-horizontal">
       <dt>Movie</dt>
-      <dd><%= @character.movie_id %></dd>
+      <dd><a href="/movies/<%= @character.movies.id %>"><%= @character.movies.title %></a></dd>
 
       <dt>Actor</dt>
-      <dd><%= @character.actor_id %></dd>
+      <dd><a href="/actors/<%= @character.actors.id %>"><%= @character.actors.name %></a></dd>
 
       <dt>Name</dt>
       <dd><%= @character.name %></dd>

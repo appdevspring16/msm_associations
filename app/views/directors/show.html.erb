@@ -18,7 +18,7 @@
       <dd><img src="<%= @director.image_url %>"></dd>
 
       <dt>Films Directed</dt>
-      <dd><%= Movie.where(:director_id => @director.id).count %></dd>
+      <dd><%= @director.movies.count %></dd>
 
     </dl>
 
@@ -37,9 +37,10 @@
 </div>
 
 <ul>
-  <% Movie.where(:director_id => @director.id).each do |movie| %>
-    <li><a href="/movies/<%=movie.id%>"><%=movie.title%></a></li>
-    <% end %>
+  <% @director.movies.each do |movie| %>
+  <li><a href="/movies/<%= movie.id %>">
+    <%= movie.title %></a></li>
+<% end %>
 </ul>
 
 <form action="/create_movie" method="post">

@@ -15,7 +15,7 @@
       <dd><%= @movie.duration %></dd>
 
       <dt>Description</dt>
-      <dd><%= @movie.description %></dd>
+      <dd><%= truncate(@movie.description) %></dd>
 
       <dt>Image url</dt>
       <dd><img src="<%= @movie.image_url %>"></dd>
@@ -23,7 +23,7 @@
       <dt>Director</dt>
       <dd>
         <a href ="/directors/<%= @movie.director_id%>">
-        <%= @movie.director.name %>
+        <%= @movie.directors.name %>
         </a>
       </dd>
 
@@ -49,7 +49,10 @@
 <ul>
    <% @movie.characters.each do |character|%>
    <li>
-     <%= character.name %>
+     <tr>
+       <td><a href="/characters/<%= character.id %>"><%= character.name %></a></td>
+       <td>(<a href="/actors/<%= character.actor_id %>"><%= character.actors.try(:name) %></a>)</td>
+     </tr>
    </li>
    <%end%>
 </ul>
