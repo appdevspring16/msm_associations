@@ -60,3 +60,5 @@ group :test do
   gem "shoulda-matchers"
   gem "webmock"
 end
+
+gem 'starter_generators', :git => "http://github.com/raghubetina/starter_generators.git"
