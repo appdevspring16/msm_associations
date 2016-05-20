@@ -19,8 +19,8 @@
 
       <dt>Filmography</dt>
       <dd>
-        <% Character.where(:actor_id => @actor.id).each do |charecter| %>
-        <li><a href="/movies/<%= charecter.movie_id %>"><%= Movie.find(charecter.movie_id).title %></a></li>
+        <% @actor.characters.each do |charecter| %>
+        <li><a href="/movies/<%= charecter.movie_id %>"><%= charecter.movie.title %></a></li>
         <% end %>
       </dd>
 

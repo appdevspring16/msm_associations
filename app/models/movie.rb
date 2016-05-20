@@ -18,5 +18,7 @@ validates :year, :numericality => { :only_integer => true, :greater_than_or_equa
 
   has_many(:characters, :class_name => "Character", :foreign_key => "movie_id")
 
+  has_many(:characters)
+  has_many(:actors, :through => :characters)
 
 end
