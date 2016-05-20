@@ -24,17 +24,17 @@
       <dd>
         <ul>
           <% Movie.where(:director_id => @director.id).each do |movie| %>
-            <li><a href="/movies/<%= movie.id %>"><%= movie.title %></a></li>
+          <li class="list-group-item"><a href="/movies/<%= movie.id %>"><%= movie.title %></a></li>
           <% end %>
-        </ul>
-
-        <div class="row">
-          <div class="col-md-12">
+          <li class="list-group-item">
             <form action="/create_movie" method="post">
               <!-- Hidden input for authenticity token to protect from forgery -->
               <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
               <!-- Label and input for title -->
+              <div class="form-group">
+                <label class="control-label">Add a movie</label>
+              </div>
               <div class="form-group">
                 <label for="title" class="control-label">
                   Title
@@ -79,7 +79,7 @@
                 <input type="text" id="image_url" name="image_url" placeholder="Image url" class="form-control" value="<%= @movie.image_url %>">
               </div>
 
-                <input type="hidden" name="director_id" value="<%= @director.id %>">
+              <input type="hidden" name="director_id" value="<%= @director.id %>">
 
               <button class="btn btn-success">
                 Create Movie
@@ -87,9 +87,9 @@
               or
               <a href="/movies">Cancel</a>
             </form>
-          </div>
-        </div>
+          </li>
 
+        </ul>
       </dd>
 
     </dl>

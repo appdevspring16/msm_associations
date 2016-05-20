@@ -5,4 +5,5 @@ class Character < ActiveRecord::Base
   # - actor_id: must be present
     validates :actor_id, :presence => true
   # - name: no rules
+    validates :name, :presence => true
 end
