@@ -8,12 +8,12 @@
       <dt>Movie</dt>
       <dd>
         <a href="/movies/<%=@character.movie_id%>">
-        <%=Movie.find_by(:id => @character.movie_id).title%></a>
+        <%=@character.movie.title%></a>
       </dd>
 
       <dt>Actor</dt>
       <dd>
-        <a href="/actors/<%=@character.actor_id%>"><%= Actor.find_by(:id => @character.actor_id).name %> </a>
+        <a href="/actors/<%=@character.actor_id%>"><%= @character.actor.name %> </a>
           </dd>
       <dt>Name</dt>
       <dd>
