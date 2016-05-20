@@ -27,7 +27,7 @@
         <td><%= movie.year %></td>
         <td><%= movie.duration %></td>
         <td><%= movie.description %></td>
-        <td><%= movie.director_id %></td>
+        <td><%= Director.find_by(:id => movie.director_id).name %></td>
         <td>
           <a href="/movies/<%= movie.id %>" class="btn btn-primary">Show</a>
           <a href="/movies/<%= movie.id %>/edit" class="btn btn-warning">Edit</a>
