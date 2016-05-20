@@ -6,5 +6,5 @@ class Director < ActiveRecord::Base
   # - bio: no rules
   # - image_url: no rules
 
-
+  has_many(:movies, :class_name => "Movie", :foreign_key => "director_id")
 end
