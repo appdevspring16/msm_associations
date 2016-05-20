@@ -20,7 +20,7 @@
 <dd>
       <ul class="list-group">
 
-        <% Character.where(:actor_id => @actor.id).each do |character|%>
+        <% @actor.characters.each do |character|%>
         <li class="list-group-item"><a href="/movies/<%= Movie.find_by(:id => character.movie_id).id %>"><%= Movie.find_by(:id => character.movie_id).title %></a> (<%= character.name %>)</li>
         <% end %>
 

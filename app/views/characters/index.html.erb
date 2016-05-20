@@ -17,8 +17,8 @@
 
       <% @characters.each do |character| %>
       <tr>
-        <td><a href="/movies/<%= character.movie_id %>"><%= Movie.find_by(:id => character.movie_id).title %></a></td>
-        <td><a href="/actors/<%= character.actor_id %>"><%= Actor.find_by(:id => character.actor_id).name %></a></td>
+        <td><a href="/movies/<%= character.movie_id %>"><%=  character.movie.title %></a></td>
+        <td><a href="/actors/<%= character.actor_id %>"><%= character.actor.name %></a></td>
         <td><%= character.name %></td>
         <td>
           <a href="/characters/<%= character.id %>" class="btn btn-primary">Show</a>

@@ -6,4 +6,7 @@ class Actor < ActiveRecord::Base
   # - bio: no rules
   # - image_url: no rules
 
+  has_many :characters, :class_name => "Character", :foreign_key => "actor_id"
+
+
 end
