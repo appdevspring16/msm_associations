@@ -12,10 +12,13 @@
       <dd><%= @director.dob %></dd>
 
       <dt>Bio</dt>
-      <dd><%= @director.bio %></dd>
+      <dd><%= truncate(@director.bio) %></dd>
 
-      <dt>Image url</dt>
-      <dd><%= @director.image_url %></dd>
+      <dt>Image</dt>
+      <dd><img src="<%= @director.image_url %>" alt=""></dd>
+
+      <dt>Number of films directed</dt>
+      <dd><%= Movie.where(:director_id => @director.id).count %></dd>
 
     </dl>
 
@@ -32,3 +35,10 @@
     </div>
   </div>
 </div>
+
+<table class="table">
+
+  <% Movie.where(:director_id => @director.id).each do |movie| %>
+    <li><a href="/movies/<%= movie.id  %>"><%= movie.title %></a></li>
+  <% end %>
+</table>
