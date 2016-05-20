@@ -35,12 +35,11 @@
 </div>
 
 <h2>List of Characters</h2>
-<!-- <% Character.where( actor_id: @actor.id).each do |character| %> -->
+<% @actor.characters.each do |character| %>
 <ul>
-  <!-- <a href="/characters/<%= character.id %>"><%= character.name %></a> -->
-  character.actor
+  <a href="/characters/<%= character.id %>"><%= character.name %></a>
 </ul>
-<!-- <% end %> -->
+<% end %>
 
 
 

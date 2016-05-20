@@ -24,10 +24,10 @@
 
 
       <dt>Director</dt>
-      <dd><%= Director.find_by( id: @movie.director_id).name %></dd>
+      <dd><%= @movie.director.name %></dd>
 
       <dt>Number of Characters</dt>
-      <dd><%= Character.where( movie_id: @movie.id).count %></dd>
+      <dd><%= @movie.characters.count %></dd>
 
     </dl>
 
@@ -46,7 +46,7 @@
 </div>
 
 <h2>List of Characters</h2>
-<% Character.where( movie_id: @movie.id).each do |character| %>
+<% @movie.characters.each do |character| %>
 <ul>
   <a href="/characters/<%= character.id %>"><%= character.name %></a>
 </ul>
@@ -76,7 +76,7 @@
         </label>
 
         <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @character.name %>">
-        
+
         <input type="hidden" id="movie_id" name="movie_id" value="<%= @movie.id %>">
       </div>
 
