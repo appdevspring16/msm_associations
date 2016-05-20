@@ -15,12 +15,27 @@
 
 
       <dt>Bio</dt>
-      <dd><%= @actor.bio %></dd>
+      <dd><%= truncate(@actor.bio) %></dd>
 
 
       <dt>Image url</dt>
       <dd><%= @actor.image_url %></dd>
 
+      <dt>Number of Movies</dt>
+      <dd> <%= Character.where({:actor_id => @actor.id}).count%>
+        <dt>Filmography</dt>
+       <dd>
+         <ul class="list-group">
+
+
+
+           <% Character.where(:actor_id => @actor.id).each do |character| %>
+             <li class="list-group-item">
+                        <a href="/movies/<%= character.movie_id %>"><%= Movie.find_by(:id => character.movie_id).title %></a> (<%= character.name %>)
+                      </li>
+                      <% end %>
+
+                 
 
     </dl>
 
