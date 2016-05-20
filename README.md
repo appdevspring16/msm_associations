@@ -69,13 +69,28 @@ In `rails console`, answer the following questions. Refer to your [CRUD with Rub
 For each question, see if you can craft a single Ruby expression that returns the final answer when entered into `rails console`.
 
  1. In what year was the oldest movie in our list released?
+ **Movie.maximum("year")**
+
  1. In what year was the most recent movie in our list released?
+ **I can't figure this one out**
+
  1. What is the duration of the shortest movie in our list?
+ **Movie.minimum("duration")**
+
  1. What is the longest movie in our list?
+ **Movie.maximum("duration")**
+
  1. How many movies in our list have the word 'godfather' in their titles?
+**Movie.first(:conditions =>"title = 'godfather'")** (Can't get this one to work)
+
  1. Who directed *Life Is Beautiful*?
+I don't know how to do this one
+
  1. How many movies in our list were directed by Francis Ford Coppola?
+ **Movie.first(:conditions =>"director = 'Francis Ford Coppola'")** (Can't get this one to work)
+
  1. What is the most recent movie in our list directed by Francis Ford Coppola?
+I don't know how to do this one
 
 ### Improving the generated boilerplate views
 
@@ -87,9 +102,16 @@ For each question, see if you can craft a single Ruby expression that returns th
 ```
 
  1. Let's also add a link to the new director form in case the director doesn't exist yet.
+**DONE**
+
  1. On a director's show page, display a count of how many movies belong to that director.
+**DONE**
+
  1. On a director's show page, display a list of the movies that belong to that director.
+ **DONE**
+
  1. At the bottom of the list of movies, write a form to add a new movie directly to that director (without having to go to http://localhost:3000/movies/new). You can start by copying over the boilerplate new movie form, and then modify it to pre-populate the `director_id` input with the correct value. Finally, switch the `type` of the input to "hidden".
+**DONE**
 
 **The above are all extremely common steps that you will want to go through for almost every One-to-Many that you ever build.**
 
