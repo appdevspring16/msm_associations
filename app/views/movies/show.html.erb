@@ -1,0 +1,100 @@
+<div class="page-header">
+  <h3>Movie #<%= @movie.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+      <dt>Title</dt>
+      <dd><%= @movie.title %></dd>
+
+      <dt>Year</dt>
+      <dd><%= @movie.year %></dd>
+
+      <dt>Duration</dt>
+      <dd><%= @movie.duration %></dd>
+
+      <dt>Description</dt>
+      <dd><%= @movie.description %></dd>
+
+      <dt>Image url</dt>
+      <dd><img src="<%= @movie.image_url %>" width="100"</dd>
+
+      <dt>Director</dt>
+      <dd>
+        <a href="/directors/<%= @movie.director_id %>">
+          <%= @movie.director.name %>
+        </a>
+      </dd>
+
+      <dt>Cast</dt>
+      <dd>
+        <ul class="list-group">
+          <% @movie.characters.each do |character| %>
+          <li class="list-group-item">
+            <a href="/actors/<%= character.actor_id %>"><%= character.actor.name %></a> (<%= character.name %>)
+          </li>
+          <% end %>
+
+          <li class="list-group-item list-group-item-success">
+            Add a new character
+          </li>
+
+          <li class="list-group-item">
+            <form action="/create_character" method="post">
+              <!-- Hidden input for authenticity token to protect from forgery -->
+              <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+              <!-- Label and input for movie_id -->
+              <div class="form-group">
+
+                <input type="hidden" id="movie_id" name="movie_id" placeholder="Movie" class="form-control" value="<%= @movie.id %>">
+              </div>
+
+              <!-- Label and input for actor_id -->
+              <div class="form-group">
+                <label for="actor_id" class="control-label">
+                  Actor
+                </label>
+
+                <%= select_tag(:actor_id, options_from_collection_for_select(Actor.all, :id, :name), :class => "form-control") %>
+
+                <p>
+                  <a href="/actors/new">or add a new actor</a>
+                </p>
+              </div>
+
+              <!-- Label and input for name -->
+              <div class="form-group">
+                <label for="name" class="control-label">
+                  Name
+                </label>
+
+                <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @character.name %>">
+              </div>
+
+              <button class="btn btn-success">
+                Create Character
+              </button>
+              or
+              <a href="/characters">Cancel</a>
+
+          </li>
+        </ul>
+      </dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/movies" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/movies/<%= @movie.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_movie/<%= @movie.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

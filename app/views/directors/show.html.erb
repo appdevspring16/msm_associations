@@ -1,0 +1,82 @@
+<div class="page-header">
+  <h3>Director #<%= @director.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+      <dt>Name</dt>
+      <dd><%= @director.name %></dd>
+
+      <dt>Dob</dt>
+      <dd><%= @director.dob %></dd>
+
+      <dt>Bio</dt>
+      <dd><%= @director.bio %></dd>
+
+      <dt>Image</dt>
+      <dd><img src="<%= @director.image_url %>"</dd>
+
+      <dt>Number of movies</dt>
+      <dd><%= @director.movies.count %></dd>
+
+      <dt>Filmography</dt>
+      <dd>
+        <ul class="list-group">
+          <% @director.movies.each do |movie| %>
+            <li class="list-group-item">
+              <a href="/movies/<%= movie.id %>"><%= movie.title %> (<%= movie.year %>)</a>
+            </li>
+          <% end %>
+
+          <li class="list-group-item">
+            <form action="/create_movie" method="post">
+              <!-- Hidden input for authenticity token to protect from forgery -->
+              <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+              <!-- Label and input for title -->
+              <div class="form-group">
+                <label for="title" class="control-label">
+                  Title
+                </label>
+
+                <input type="text" id="title" name="title" placeholder="Title" class="form-control" value="<%= @movie.title %>">
+              </div>
+
+              <!-- Label and input for year -->
+              <div class="form-group">
+                <label for="year" class="control-label">
+                  Year
+                </label>
+
+                <input type="text" id="year" name="year" placeholder="Year" class="form-control" value="<%= @movie.year %>">
+              </div>
+
+              <input type="hidden" id="duration" name="duration" placeholder="Duration" class="form-control" value="0">
+              <input type="hidden" id="image_url" name="image_url" placeholder="Image url" class="form-control" value="<%= @movie.image_url %>">
+              <input type="hidden" name="director_id" value="<%= @director.id %>">
+
+              <button class="btn btn-success">
+                Create Movie
+              </button>
+              or
+              <a href="/movies">Cancel</a>
+            </form>
+          </li>
+        </ul>
+      </dd>
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/directors" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/directors/<%= @director.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_director/<%= @director.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>
