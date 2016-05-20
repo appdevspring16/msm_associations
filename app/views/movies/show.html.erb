@@ -21,7 +21,7 @@
       <dd><%= @movie.image_url %></dd>
 
       <dt>Director</dt>
-      <dd><%= @movie.director_id %></dd>
+      <dd><%= Director.find_by(:id => @movie.director_id).name %></dd>
 
     </dl>
 

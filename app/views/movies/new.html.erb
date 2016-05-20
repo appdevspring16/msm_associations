@@ -1,11 +1,11 @@
 <!-- Validation failure messages -->
 <% if @movie.errors.any? %>
-  <% @movie.errors.full_messages.each do |message| %>
-    <div class="alert alert-dismissable alert-danger">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <%= message %>
-    </div>
-  <% end %>
+<% @movie.errors.full_messages.each do |message| %>
+<div class="alert alert-dismissable alert-danger">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <%= message %>
+</div>
+<% end %>
 <% end %>
 
 <div class="page-header">
@@ -69,7 +69,11 @@
           Director
         </label>
 
-        <input type="text" id="director_id" name="director_id" placeholder="Director" class="form-control" value="<%= @movie.director_id %>">
+        <select name="director_id" class="form-control">
+          <% Director.all.each do |director| %>
+          <option value="<%= director.id %>"><%= director.name %></option>
+          <% end %>
+        </select>
       </div>
 
       <button class="btn btn-success">
