@@ -19,7 +19,9 @@
 
 
       <dt>Number of films directed</dt>
-      <dd><%= Movie.where(:director_id => @director.id).count %>
+      <dd>
+        <%= @director.movies.count %>
+      </dd>
 
     </dl>
 
@@ -38,10 +40,13 @@
 </div>
 
 <ul>
-  <%= @director.movies.each do |movie| %>
-  <li><a href="/movies/<%= movie.id %>"><%= movie.title %></a></li>
+  <% @director.movies.each do |movie| %>
+  <li>
+    <a href="/movies/<%= movie.id %>"><%= movie.title %></a>
+  </li>
   <% end %>
 </ul>
+
 
 <div class="row">
   <div class="col-md-12">
