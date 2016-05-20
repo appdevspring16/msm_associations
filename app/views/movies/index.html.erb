@@ -21,7 +21,7 @@
         <td><img src="<%= movie.image_url %>" /></td>
         <td><%= movie.title %></td>
         <td><%= movie.year %></td>
-        <td><a href="/directors/<%= movie.director_id %>"><%= Director.find_by(:id => movie.director_id).name %></a></td>
+        <td><a href="/directors/<%= movie.director_id %>"><%= movie.director.name %></a></td>
         <td>
           <a href="/movies/<%= movie.id %>" class="btn btn-primary">Show</a>
           <a href="/movies/<%= movie.id %>/edit" class="btn btn-warning">Edit</a>

@@ -18,14 +18,14 @@
       <dd><%= truncate(@actor.bio) %></dd>
 
       <dt>Movies starred in</dt>
-      <dd><%= Character.where(:actor_id => @actor.id).count %></dd>
+      <dd><%= @actor.characters.count %></dd>
 
       <dt>Filmography</dt>
       <dd>
         <ul>
-          <% Character.where(:actor_id => @actor.id).each do |character| %>
+          <% @actor.characters.each do |character| %>
           <li class="list-group-item">
-            <a href="/movies/<%= character.movie_id %>"><%= Movie.find_by(:id => character.movie_id).title %></a>
+            <a href="/movies/<%= character.movie_id %>"><%= character.movie.title %></a>
               (<%= character.name %>)
           </li>
 

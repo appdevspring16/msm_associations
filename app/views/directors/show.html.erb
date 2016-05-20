@@ -18,13 +18,14 @@
       <dd><%= truncate(@director.bio) %></dd>
 
       <dt>Number of movies</dt>
-      <dd><%= Movie.where(:director_id => @director.id).count %></dd>
+      <dd><%= @director.movies.count %></dd>
 
       <dt>Filmography</dt>
       <dd>
         <ul>
-          <% Movie.where(:director_id => @director.id).each do |movie| %>
-          <li class="list-group-item"><a href="/movies/<%= movie.id %>"><%= movie.title %></a></li>
+          <% @director.movies.each do |movie| %>
+          <li class="list-group-item">
+            <a href="/movies/<%= movie.id %>"><%= movie.title %></a></li>
           <% end %>
           <li class="list-group-item">
             <form action="/create_movie" method="post">
