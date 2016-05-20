@@ -178,24 +178,36 @@ We now have two foreign keys in the characters table. That means, essentially, *
 So, we should first go through the steps we went through above when we were setting up the one-to-many between directors and movies:
 
 1. Currently, on the characters index page and a character's show page, the code that the generator wrote for you is showing users raw movie ID numbers. This is bad. Replace the id number with the title of the movie.
+**DONE**
+
 1. On the new and edit character pages, let's give our users a dropdown box to select a movie, rather than having to type in a valid ID number. Let's use the `select_tag` view helper method to make this slightly easier than writing the raw HTML `<select>` and `<option>` tags by hand:
 
 ```erb
 <%= select_tag(:movie_id, options_from_collection_for_select(Movie.all, :id, :title, @character.movie_id), :class => "form-control")
 ```
+**DONE**
 
 1. Let's also add a link to the new movie form in case the movie doesn't exist yet.
+**DONE**
+
 1. On a movie's show page, display a count of how many characters belong to that movie.
+**DONE**
+
 1. On a movie's show page, display a list of the characters that belong to that movie.
+**DONE**
+
 1. At the bottom of the list of characters, write a form to add a new character directly to that movie (without having to go to http://localhost:3000/characters/new). You can start by copying over the boilerplate new character form, and then modify it to pre-populate the `movie_id` input with the correct value. Finally, switch the `type` of the input to "hidden".
+**DONE**
 
 Do the same steps for the one-to-many relationship between actors and characters.
 
 ### The last hop
 
 Now that you have a list of character names on a movie's show page, replace the character name with the actor name -- voilà, we have a cast.
+**DONE**
 
 Now that you have a list of character names on a actor's show page, replace the character name with the movie title -- voilà, we have a filmography.
+**DONE**
 
 **We have achieved the many-to-many relationship between movies and actors by adding a join table (characters) and then building two one-to-manies.**
 

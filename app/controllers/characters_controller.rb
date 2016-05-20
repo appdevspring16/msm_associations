@@ -26,6 +26,8 @@ class CharactersController < ApplicationController
 
   def edit
     @character = Character.find(params[:id])
+    @movie = Movie.new
+    @director= Director.new
   end
 
   def update

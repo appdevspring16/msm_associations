@@ -32,3 +32,11 @@
     </div>
   </div>
 </div>
+
+
+<ul>
+<% @actor.characters.each do |character| %>
+<li>Acted in <%= Movie.find_by(:id=>character.movie_id).title %> and played the part of:  <%= character.name %></li>
+<%end%>
+</ul>
+</td></tr></table>
