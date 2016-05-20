@@ -26,6 +26,8 @@
       </a>
       </dd>
 
+
+
     </dl>
 
     <div class="btn-group btn-group-justified">
@@ -41,3 +43,11 @@
     </div>
   </div>
 </div>
+
+<ul>
+  <% Character.where(:movie_id => @movie.id).each do |character| %>
+    <li><%= character.actor.name %>
+(<%= character.name %>)
+    </li>
+  <% end %>
+</ul>
