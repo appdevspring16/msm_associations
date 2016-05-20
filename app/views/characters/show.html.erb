@@ -1,20 +1,42 @@
-<!-- Validation failure messages -->
-<% if @movie.errors.any? %>
-  <% @movie.errors.full_messages.each do |message| %>
-    <div class="alert alert-dismissable alert-danger">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <%= message %>
-    </div>
-  <% end %>
-<% end %>
-
 <div class="page-header">
-  <h3>Edit Movie #<%= @movie.id %></h3>
+  <h3><%= @character.name %></h3>
 </div>
 
 <div class="row">
   <div class="col-md-12">
-    <form action="/update_movie/<%= @movie.id %>" method="post">
+    <dl class="dl-horizontal">
+      <dt>Movie</dt>
+      <dd><%= @character.movie.title%></dd>
+
+      <dt>Actor</dt>
+      <dd><%= @character.actor.name%></dd>
+
+      <dt>Name</dt>
+      <dd><%= @character.name %></dd>
+
+
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/characters" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/characters/<%= @character.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_character/<%= @character.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_movie" method="post">
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
@@ -67,16 +89,17 @@
       <div class="form-group">
         <label for="director_id" class="control-label">
           Director
-        </label>
 
-            <%= select_tag(:director_id, options_from_collection_for_select(Director.all, :id, :name, @movie.director_id), :class=>"form-control") %>
+
+        <%= select_tag(:director_id, options_from_collection_for_select(Director.all, :id, :name, @movie.director_id), :class=>"form-control") %>
+
       </div>
 
-      <button class="btn btn-warning">
-        Update Movie
+      <button class="btn btn-success">
+        Create Movie
       </button>
       or
-      <a href="/movies/<%= @movie.id %>">Cancel</a>
+      <a href="/movies">Cancel</a>
     </form>
   </div>
 </div>
