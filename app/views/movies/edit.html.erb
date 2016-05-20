@@ -1,48 +1,3 @@
-<div class="page-header">
-  <h3>Director #<%= @director.id %></h3>
-</div>
-
-<div class="row">
-  <div class="col-md-12">
-    <dl class="dl-horizontal">
-      <dt>Name</dt>
-      <dd><%= @director.name %></dd>
-
-      <dt>Dob</dt>
-      <dd><%= @director.dob %></dd>
-
-      <dt>Bio</dt>
-      <dd><%= truncate(@director.bio) %></dd>
-
-      <dt>Image url</dt>
-      <dd><%= @director.image_url %></dd>
-
-      <dt>Number of films directed</dt>
-      <dd><%= Movie.where( :director_id => @director.id).count %></dd>
-
-    </dl>
-    
-    <div class="btn-group btn-group-justified">
-      <a href="/directors" class="btn btn-primary">
-        Back
-      </a>
-      <a href="/directors/<%= @director.id %>/edit" class="btn btn-warning">
-        Edit
-      </a>
-      <a href="/delete_director/<%= @director.id %>" class="btn btn-danger" rel="nofollow">
-        Delete
-      </a>
-    </div>
-  </div>
-</div>
-
-<ul>
-  <% Movie.where(:director_id => @director.id).each do |movie| %>
-  <li><a href="/movies/<%=movie.id%>"><%= movie.title  %></a></li>
-
-  <% end %>
-</ul>
-
 <!-- Validation failure messages -->
 <% if @movie.errors.any? %>
   <% @movie.errors.full_messages.each do |message| %>
@@ -54,12 +9,12 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Add Movie</h3>
+  <h3>Edit Movie #<%= @movie.id %></h3>
 </div>
 
 <div class="row">
   <div class="col-md-12">
-    <form action="/create_movie" method="post">
+    <form action="/update_movie/<%= @movie.id %>" method="post">
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
@@ -108,14 +63,20 @@
         <input type="text" id="image_url" name="image_url" placeholder="Image url" class="form-control" value="<%= @movie.image_url %>">
       </div>
 
-    <input type="hidden" name="director_id" value="<%= @director.id %>">
+      <!-- Label and input for director_id -->
+      <div class="form-group">
+        <label for="director_id" class="control-label">
+          Director
+        </label>
 
+        <input type="text" id="director_id" name="director_id" placeholder="Director" class="form-control" value="<%= @movie.director_id %>">
+      </div>
 
-      <button class="btn btn-success">
-        Create Movie
+      <button class="btn btn-warning">
+        Update Movie
       </button>
       or
-      <a href="/movies">Cancel</a>
+      <a href="/movies/<%= @movie.id %>">Cancel</a>
     </form>
   </div>
 </div>
