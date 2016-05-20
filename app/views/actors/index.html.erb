@@ -1,0 +1,34 @@
+<div class="page-header">
+  <h1>
+    Actors
+    <a href="/actors/new" class="btn btn-lg btn-success">New Actor</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Dob</th>
+        <th>Bio</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @actors.each do |actor| %>
+      <tr>
+        <td><img src="<%= actor.image_url %>"></td>
+        <td><%= actor.name %></td>
+        <td><%= actor.dob %></td>
+        <td><%= actor.bio %></td>
+        <td>
+          <a href="/actors/<%= actor.id %>" class="btn btn-primary">Show</a>
+          <a href="/actors/<%= actor.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_actor/<%= actor.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
