@@ -1,0 +1,111 @@
+<div class="page-header">
+  <h3>Director #<%= @director.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+      <dt>Name</dt>
+      <dd><%= @director.name %></dd>
+
+      <dt>Dob</dt>
+      <dd><%= @director.dob %></dd>
+
+      <dt>Bio</dt>
+      <dd><%= @director.bio %></dd>
+
+      <dt>Image url</dt>
+      <dd><img src="<%=@director.image_url %>" /> </dd>
+
+      <dt># Of Movies</dt>
+      <dd><%= @director.movies.count %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/directors" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/directors/<%= @director.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_director/<%= @director.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>
+
+<ul>
+  <% @director.movies.each do |movie| %>
+<li> <a href="/movies/<%= movie.id %>"><%= movie.title %></a></li>
+<% end %>
+</ul>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_movie" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for title -->
+      <div class="form-group">
+        <label for="title" class="control-label">
+          Title
+        </label>
+
+        <input type="text" id="title" name="title" placeholder="Title" class="form-control">
+      </div>
+
+      <!-- Label and input for year -->
+      <div class="form-group">
+        <label for="year" class="control-label">
+          Year
+        </label>
+
+        <input type="text" id="year" name="year" placeholder="Year" class="form-control" value="<%= @movie.year %>">
+      </div>
+
+      <!-- Label and input for duration -->
+      <div class="form-group">
+        <label for="duration" class="control-label">
+          Duration
+        </label>
+
+        <input type="text" id="duration" name="duration" placeholder="Duration" class="form-control" value="<%= @movie.duration %>">
+      </div>
+
+      <!-- Label and input for description -->
+      <div class="form-group">
+        <label for="description" class="control-label">
+          Description
+        </label>
+
+        <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3"><%= @movie.description %></textarea>
+      </div>
+
+      <!-- Label and input for image_url -->
+      <div class="form-group">
+        <label for="image_url" class="control-label">
+          Image url
+        </label>
+
+        <input type="text" id="image_url" name="image_url" placeholder="Image url" class="form-control" value="<%= @movie.image_url %>">
+      </div>
+
+      <!-- Label and input for director_id -->
+      <div class="form-group">
+
+<input type="hidden" name="director_id" value="<%= @director.id %>">
+      </div> <a href="/directors/new" class="btn btn-lg btn-success">New Director</a>
+<p>
+
+</p>
+      <button class="btn btn-success">
+        Create Movie
+      </button>
+      or
+      <a href="/movies">Cancel</a>
+    </form>
+  </div>
+</div>
