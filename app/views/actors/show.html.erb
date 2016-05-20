@@ -1,0 +1,83 @@
+<div class="page-header">
+  <h3>Actor #<%= @actor.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+      <dt>Name</dt>
+      <dd><%= @actor.name %></dd>
+
+      <dt>Dob</dt>
+      <dd><%= @actor.dob %></dd>
+
+      <dt>Bio</dt>
+      <dd><%= @actor.bio %></dd>
+
+      <dt>Image url</dt>
+      <dd><%= @actor.image_url %></dd>
+
+      <dt>Number of characters</dt>
+      <dd><%= Character.where(:actor_id => @actor.id).count %></dd>
+
+      <ul>
+        <% Character.where(:actor_id => @actor.id).each do |character| %>
+        <li><a href="/characters/<%= character.id %>"><%= character.name %></a></li>
+        <% end %>
+      </ul>
+
+    </dl>
+
+    <div class="page-header">
+      <h3>Add Character</h3>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <form action="/create_character" method="post">
+          <!-- Hidden input for authenticity token to protect from forgery -->
+          <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+          <input type="hidden" name="actor_id" value="<%= @actor.id %>" id="">
+
+          <!-- Label and input for actor_id -->
+          <div class="form-group">
+            <label for="movie_id" class="control-label">
+              Movie
+            </label>
+
+            <input type="text" id="movie_id" name="movie_id" placeholder="Movie" class="form-control" value="">
+          </div>
+
+          <!-- Label and input for name -->
+          <div class="form-group">
+            <label for="name" class="control-label">
+              Name
+            </label>
+
+            <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="">
+          </div>
+
+          <button class="btn btn-success">
+            Create Character
+          </button>
+          or
+          <a href="/characters">Cancel</a>
+        </form>
+      </div>
+    </div>
+
+
+    <div class="btn-group btn-group-justified">
+      <a href="/actors" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/actors/<%= @actor.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_actor/<%= @actor.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>
