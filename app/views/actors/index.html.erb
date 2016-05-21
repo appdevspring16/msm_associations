@@ -20,7 +20,7 @@
       <tr>
         <td><%= actor.name %></td>
         <td><%= actor.dob %></td>
-        <td><%= actor.bio %></td>
+        <td><%= truncate(actor.bio) %></td>
         <td><%= actor.image_url %></td>
         <td>
           <a href="/actors/<%= actor.id %>" class="btn btn-primary">Show</a>

@@ -32,3 +32,13 @@
     </div>
   </div>
 </div>
+
+<table>
+  Number of roles = <%=  Character.where( :actor_id => @actor.id).count %>
+</table>
+
+<ul>
+  <% Character.where(:actor_id => @actor.id).each do |character| %>
+  <li><%= character.name  %></li>
+  <% end %>
+</ul>
