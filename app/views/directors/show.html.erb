@@ -37,8 +37,10 @@
 </div>
 
 <ul>
-  <% Movie.where(:director_id => @director.id).each do |movie| %>
+  <!-- <% Movie.where(:director_id => @director.id).each do |movie| %> -->
+  <% @director.movie.each do |movie| %>
     <li><a href="/movies/<%= movie.id %>"><%= movie.title %></li>
+  <!-- <% end %> -->
   <% end %>
 </ul>
 

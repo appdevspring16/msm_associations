@@ -27,8 +27,8 @@
       </a>
     </dd>
     <dt>Number of characters</dt>
-    <dd><%= Character.where(:movie_id => @movie.id).count %>
-    </dd>
+    <!-- <dd><%= Character.where(:movie_id => @movie.id).count %></dd> -->
+    <dd><%= @movie.characters.count %></dd>
     <dt>Cast</dt>
     <% @movie.characters.each do |character| %>
       <dd>
