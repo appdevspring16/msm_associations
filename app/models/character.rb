@@ -3,5 +3,6 @@ class Character < ActiveRecord::Base
 validates :movie_id, :presence => true
 # - actor_id: must be present
 validates :actor_id, :presence => true
-# - name: no rules
+# - name: must be present
+validates :name, :presence => true
 end
