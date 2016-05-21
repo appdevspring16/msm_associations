@@ -18,7 +18,7 @@
       <dd><%= @movie.description %></dd>
 
       <dt>Image</dt>
-      <dd><img src="<%= @movie.image_url %>"></dd>
+      <dd><img src="<%= @movie.image_url %>" width="100"></dd>
 
       <dt>Director</dt>
       <dd><%= @movie.director.name %></dd>
@@ -31,22 +31,12 @@
       <dd>
         <ul class="list-group">
           <% @movie.characters.each do |character| %>
-          <li class="list-group-item"><%= character.name %></li>
+          <li class="list-group-item"><a href="/actors/<%= character.actor_id %>"><%= character.actor.name %></a>(<%= character.name %>)</li>
           <% end %>
-
-
-
-
-
-
+          <li class="list-group-item list-group-item-success">
+            Add a new character
+          </li>
           <li class="list-group-item">
-
-
-
-
-
-
-
 
             <form action="/create_character" method="post">
               <!-- Hidden input for authenticity token to protect from forgery -->
@@ -55,13 +45,30 @@
               <!-- Label and input for movie_id -->
               <input type="hidden" name="movie_id" value="<%= @movie.id %>">
 
+              <div class="form-group">
+                <label for="actor_id" class="control-label">
+                  Actor
+                </label>
+
+
+                <p><a href="/movies/new">or add a new actor</a></p>
+              </div>
+
+              <!-- Label and input for name -->
+              <div class="form-group">
+                <label for="name" class="control-label">
+                  Name
+                </label>
+                <input type="text" id="name" name="name" placeholder="Name" class="form-control">
+              </div>
+
+
 
 
               <button class="btn btn-success">
                 Create Character
               </button>
-              or
-              <a href="/characters">Cancel</a>
+
             </form>
 
 

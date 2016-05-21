@@ -17,8 +17,18 @@
       <dt>Image url</dt>
       <dd><img src="<%= @actor.image_url %>" width = "100"> </dd>
 
-      <dt>Number of roles played</dt>
+      <dt>Number of movies</dt>
       <dd><%= @actor.characters.count %></dd>
+
+      <dt>Filmography</dt>
+      <dd>
+        <ul class = "list-group">
+          <% @actor.characters.each do |character| %>
+          <li class="list-group-item"><a href="/movies/<%= character.movie_id %>"><%= character.movie.title %></a>(<%= character.name %>)</li>
+          <% end %>
+        </ul>
+      </dd>
+
 
 
     </dl>
