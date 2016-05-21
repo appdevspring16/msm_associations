@@ -38,7 +38,7 @@
 </table>
 
 <ul>
-  <% Character.where(:actor_id => @actor.id).each do |character| %>
-  <li><%= character.name  %></li>
+  <% @actor.characters.each do |character| %>
+  <li><%= character.movie.title  %></li>
   <% end %>
 </ul>

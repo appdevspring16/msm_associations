@@ -9,4 +9,7 @@ class Character < ActiveRecord::Base
 
  # actor method
  belongs_to(:actor, :class_name =>"Actor", :foreign_key => "actor_id")
+
+ belongs_to :movie
+ belongs_to :actor
 end

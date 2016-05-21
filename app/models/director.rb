@@ -6,4 +6,5 @@ class Director < ActiveRecord::Base
   # - bio: no rules
   # - image_url: no rules
 
+  has_many  :movies
 end

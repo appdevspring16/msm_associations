@@ -44,8 +44,8 @@
 </table>
 
 <ul>
-  <% Character.where(:movie_id => @movie.id).each do |character| %>
-  <li><%= character.name  %></li>
+  <% Character.where( :movie_id => @movie.id).each do |character| %>
+  <li><%= character.actor.name  %></li>
   <% end %>
 </ul>
 
