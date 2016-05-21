@@ -1,0 +1,44 @@
+<div class="page-header">
+  <h1><%= @actor.name %></h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+
+      <dt>Dob:</dt>
+      <dd><%= @actor.dob %></dd>
+
+      <dt>Bio:</dt>
+      <dd><%= truncate(@actor.bio) %></dd>
+
+      <dt>Image:</dt>
+      <dd><img src="<%= @actor.image_url %>" width="100"></dd></dd>
+
+      <dt>Characters:</dt>
+      <dd>
+        <ul class="list-group">
+          <% @actor.characters.each do |character| %>
+          <li class="list-group-item">
+            <%= character.name %>
+          </li>
+          <% end %>
+        </ul>
+      </dd>
+
+
+          </dl>
+
+          <div class="btn-group btn-group-justified">
+            <a href="/actors" class="btn btn-primary">
+              Back
+            </a>
+            <a href="/actors/<%= @actor.id %>/edit" class="btn btn-warning">
+              Edit
+            </a>
+            <a href="/delete_actor/<%= @actor.id %>" class="btn btn-danger" rel="nofollow">
+              Delete
+            </a>
+          </div>
+        </div>
+      </div>
