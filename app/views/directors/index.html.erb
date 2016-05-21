@@ -21,7 +21,9 @@
         <td><%= director.name %></td>
         <td><%= director.dob %></td>
         <td><%= director.bio %></td>
-        <td><%= director.image_url %></td>
+        <td> <img src="<%= director.image_url %>" />
+
+      </td>
         <td>
           <a href="/directors/<%= director.id %>" class="btn btn-primary">Show</a>
           <a href="/directors/<%= director.id %>/edit" class="btn btn-warning">Edit</a>
