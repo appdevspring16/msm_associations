@@ -5,6 +5,10 @@
 <div class="row">
   <div class="col-md-12">
     <dl class="dl-horizontal">
+      <dt>Image url</dt>
+      <dd><img src="<%= @movie.image_url %>" alt="" />
+        </dd>
+
       <dt>Title</dt>
       <dd><%= @movie.title %></dd>
 
@@ -17,11 +21,10 @@
       <dt>Description</dt>
       <dd><%= @movie.description %></dd>
 
-      <dt>Image url</dt>
-      <dd><%= @movie.image_url %></dd>
-
       <dt>Director</dt>
-      <dd><%= @movie.director_id %></dd>
+      <dd>
+        <a href="/directors/<%= @movie.director_id %>"><%= Director.find_by(:id =>@movie.director_id).name %></a>
+        </dd>
 
     </dl>
 
