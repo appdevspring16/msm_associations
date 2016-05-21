@@ -9,4 +9,6 @@ class Director < ActiveRecord::Base
 
   # - image_url: no rules
 
-end
+  has_many(:movies, :class_name => "Movie", :foreign_key => "director_id")
+
+  end

@@ -24,8 +24,10 @@
           Movie
         </label>
 
-        <input type="text" id="movie_id" name="movie_id" placeholder="Movie" class="form-control" value="<%= @character.movie_id %>">
+        <%= select_tag(:movie_id, options_from_collection_for_select(Movie.all, :id, :title, @character.movie_id), :class => "form-control") %>
       </div>
+      or
+      <a href="/create_movie">Create a New Movie</a>
 
       <!-- Label and input for actor_id -->
       <div class="form-group">
