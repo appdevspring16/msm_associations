@@ -21,7 +21,7 @@
       <dd><img src="<%= @movie.image_url %>" width="100"></dd>
 
       <dt>Director</dt>
-      <dd><%= @movie.director.name %></dd>
+      <dd><a href="/directors/<%= @movie.director_id %>"><%= @movie.director.name %></a></dd>
 
       <dt>Number of characters</dt>
       <dd><%= @movie.characters.count %></dd>
@@ -31,7 +31,7 @@
       <dd>
         <ul class="list-group">
           <% @movie.characters.each do |character| %>
-          <li class="list-group-item"><a href="/actors/<%= character.actor_id %>"><%= character.actor.name %></a>(<%= character.name %>)</li>
+          <li class="list-group-item"><a href="/actors/<%= character.actor_id %>"><%= character.actor.name %></a> (<%= character.name %>)</li>
           <% end %>
           <li class="list-group-item list-group-item-success">
             Add a new character
