@@ -20,11 +20,20 @@
       <dt>Number of Roles</dt>
       <dd><%= @actor.characters.count %></dd>
 
-      <dt>List of Gigs</dt>
+      <dt>List of Roles</dt>
       <dd>
         <ul>
           <% @actor.characters.each do |character| %>
           <li> <a href="/characters/<%= character.id %>"><%= character.name %></a></li>
+          <% end %>
+        </ul>
+      </dd>
+
+      <dt>Filmography</dt>
+      <dd>
+        <ul>
+          <% @actor.characters.each do |character| %>
+          <li> <a href="/characters/<%= character.id %>"><%= character.movie.title %></a></li>
           <% end %>
         </ul>
       </dd>
