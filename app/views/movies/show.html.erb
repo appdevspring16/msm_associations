@@ -28,7 +28,21 @@
     </dd>
 
     <dt>Number of Characters</dt>
-    <dd><%= Character.where(:movie_id => @movie.id).count %></dd>
+    <!-- <dd><%= Character.where(:movie_id => @movie.id).count %></dd> -->
+    <dd><%= @movie.characters.count %></dd>
+    <dt>Cast</dt>
+    <dd>
+    <ul>
+      <!-- <% Character.where(:movie_id => @movie.id).each do |character| %>
+      <li><%= character.actor.name %>
+        (<%= character.name %>)
+      </li>
+      <% end %> -->
+      <% @movie.characters.each do |character| %>
+      <li><%= character.actor.name %>(<%= character.name %>)</li>
+      <% end %>
+    </ul>
+  </dd>
   </dl>
 
   <div class="btn-group btn-group-justified">
@@ -45,15 +59,6 @@
 </div>
 </div>
 <div>
-<h4>Cast</h4>
-
-<ul>
-  <% Character.where(:movie_id => @movie.id).each do |character| %>
-  <li><%= character.actor.name %>
-(<%= character.name %>)
-  </li>
-  <% end %>
-</ul>
 <form action="/create_character" method="post">
   <!-- Hidden input for authenticity token to protect from forgery -->
   <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
