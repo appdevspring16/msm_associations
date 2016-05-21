@@ -15,9 +15,14 @@
       <dd><%= @actor.bio %></dd>
 
       <dt>Image url</dt>
-      <dd><%= @actor.image_url %></dd>
+      <dd><img src="<%= @actor.image_url %>" width = "100"> </dd>
+
+      <dt>Number of roles played</dt>
+      <dd><%= @actor.characters.count %></dd>
+
 
     </dl>
+
 
     <div class="btn-group btn-group-justified">
       <a href="/actors" class="btn btn-primary">
