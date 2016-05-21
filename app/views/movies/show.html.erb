@@ -17,11 +17,11 @@
       <dt>Description</dt>
       <dd><%= @movie.description %></dd>
 
-      <dt>Image url</dt>
-      <dd><%= @movie.image_url %></dd>
+      <dt>Image</dt>
+      <dd><img src="<%= @movie.image_url %>"></dd>
 
       <dt>Director</dt>
-      <dd><%= @movie.director_id %></dd>
+      <dd><%= Director.find_by(:id => @movie.director_id).name %></dd>
 
     </dl>
 
