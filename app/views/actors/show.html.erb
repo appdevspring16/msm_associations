@@ -12,10 +12,22 @@
       <dd><%= @actor.dob %></dd>
 
       <dt>Bio</dt>
-      <dd><%= @actor.bio %></dd>
+      <dd><%= truncate(@actor.bio) %></dd>
 
       <dt>Image url</dt>
       <dd><%= @actor.image_url %></dd>
+
+      <dt>Number of Roles</dt>
+      <dd><%= @actor.characters.count %></dd>
+
+      <dt>List of Gigs</dt>
+      <dd>
+        <ul>
+          <% @actor.characters.each do |character| %>
+          <li> <a href="/characters/<%= character.id %>"><%= character.name %></a></li>
+          <% end %>
+        </ul>
+      </dd>
 
     </dl>
 
@@ -32,3 +44,37 @@
     </div>
   </div>
 </div>
+
+<form action="/create_character" method="post">
+  <!-- Hidden input for authenticity token to protect from forgery -->
+  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+  <!-- Label and input for movie_id -->
+  <div class="form-group">
+    <label for="movie_id" class="control-label">
+      Movie
+    </label>
+
+    <%= select_tag(:movie_id, options_from_collection_for_select(Movie.all, :id, :title, @character.movie_id), :class => "form-control") %>
+  </div>
+
+  <!-- Label and input for actor_id -->
+  <div class="form-group">
+    <input type="hidden" name="name" value="<%= @actor.id %>">
+  </div>
+
+  <!-- Label and input for name -->
+  <div class="form-group">
+    <label for="name" class="control-label">
+      Name
+    </label>
+
+    <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @character.name %>">
+  </div>
+
+  <button class="btn btn-success">
+    Create Character
+  </button>
+  or
+  <a href="/characters">Cancel</a>
+</form>
