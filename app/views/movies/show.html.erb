@@ -27,7 +27,7 @@
       <dd><%= @movie.characters.count %></dd>
 
 
-      <dt>Characters</dt>
+      <dt>Cast</dt>
       <dd>
         <ul class="list-group">
           <% @movie.characters.each do |character| %>
@@ -50,6 +50,7 @@
                   Actor
                 </label>
 
+                <%= select_tag(:actor_id, options_from_collection_for_select(Actor.all, :id, :name), :class => "form-control")%>
 
                 <p><a href="/movies/new">or add a new actor</a></p>
               </div>
