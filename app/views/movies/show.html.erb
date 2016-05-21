@@ -20,7 +20,7 @@
       <dt>Director</dt>
       <dd>
         <a href="/directors/<%= @movie.director_id %>">
-        <%= Director.find_by(:id => @movie.director_id).name %></a></dd>
+        <%= @movie.director.name %></a></dd>
 
       <dt>Image url</dt>
       <dd><img src="<%= @movie.image_url %>"></dd>
@@ -44,7 +44,7 @@
 <ul>
 
 <% Character.where(:movie_id => @movie.id).each do |character| %>
-  <li><a href="/characters/<%= character.id %>"><%= character.name %></a>
+  <li><a href="/characters/<%= character.id %>"><%= character.actor %></a>
 <% end %>
 
 </ul>
