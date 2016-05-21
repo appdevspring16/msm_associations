@@ -12,14 +12,20 @@
       <dd><%= @director.dob %></dd>
 
       <dt>Bio</dt>
-      <dd><%= @director.bio %></dd>
+      <dd><%= truncate(@director.bio) %></dd>
 
-      <dt>Image url</dt>
-      <dd><%= @director.image_url %></dd>
+      <dt>Image</dt>
+      <!-- <dd><%= @director.image_url %></dd> -->
+      <dd><img src="<%= @director.image_url %>" alt=""></dd>
 
-      <dt>Number of films directed</dt>
+
+
+      <dt>Number of movies</dt>
       <!-- <dd><%= Movie.where(:director_id=> @director.id).count%></dd> -->
       <dd><%= @director.movies.count %></dd>
+
+
+
 
 
     </dl>
@@ -39,15 +45,10 @@
 </div>
 
 <ul>
-  <!-- <% Movie.where(:director_id=>@director.id).each do |movie| %> -->
   <% @director.movies.each do |movie| %>
-  <li><a href="/movies/<%= movie.id %>">
-    <%= movie.title %>
-  </a></li>
+  <li><a href="/movies/<%= movie.id %>"><%= movie.title %></a></li>
   <% end %>
 </ul>
-
-
 <div class="row">
   <div class="col-md-12">
     <form action="/create_movie" method="post">
@@ -131,5 +132,4 @@
     or
     <a href="/movies">Cancel</a>
   </form>
-</div>
 </div>
