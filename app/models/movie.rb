@@ -12,4 +12,6 @@ class Movie < ActiveRecord::Base
 
   has_many(:characters, :class_name => "Character", :foreign_key => "movie_id")
 
+  has_many :actors, :through => :characters
+
 end
