@@ -27,12 +27,7 @@
           <% Movie.where(:director_id => @director.id).each do |movie| %>
           <li class="list-group-item"><%= movie.title %>(<%= movie.year %>)</li>
           <% end %>
-
-
-
-
-
-
+          
         <li class="list-group-item">
 
           <form action="/create_movie" method="post">
@@ -96,14 +91,6 @@
           </form>
 
         </li>
-
-
-
-
-
-
-
-
 
       </ul>
       </dd>
