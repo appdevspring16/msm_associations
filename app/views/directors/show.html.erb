@@ -18,7 +18,9 @@
       <dd><%= @director.image_url %></dd>
 
       <dt>Number of films directed</dt>
-      <dd><%= Movie.where(:director_id=> @director.id).count%></dd>
+      <!-- <dd><%= Movie.where(:director_id=> @director.id).count%></dd> -->
+      <dd><%= @director.movies.count %></dd>
+
 
     </dl>
 
@@ -37,11 +39,97 @@
 </div>
 
 <ul>
-  <% Movie.where(:director_id=>@director.id).each do |movie| %>
+  <!-- <% Movie.where(:director_id=>@director.id).each do |movie| %> -->
+  <% @director.movies.each do |movie| %>
   <li><a href="/movies/<%= movie.id %>">
     <%= movie.title %>
   </a></li>
   <% end %>
 </ul>
 
-<form action="/create_movie"></form>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_movie" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for title -->
+      <div class="form-group">
+        <label for="title" class="control-label">
+          Title
+        </label>
+
+        <input type="text" id="title" name="title" placeholder="Title" class="form-control" value="<%= @movie.title %>">
+      </div>
+
+      <!-- Label and input for year -->
+      <div class="form-group">
+        <label for="year" class="control-label">
+          Year
+        </label>
+
+        <input type="text" id="year" name="year" placeholder="Year" class="form-control" value="<%= @movie.year %>">
+      </div>
+
+      <!-- Label and input for duration -->
+      <div class="form-group">
+        <label for="duration" class="control-label">
+          Duration
+        </label>
+
+        <input type="text" id="duration" name="duration" placeholder="Duration" class="form-control" value="<%= @movie.duration %>">
+      </div>
+
+      <!-- Label and input for description -->
+      <div class="form-group">
+        <label for="description" class="control-label">
+          Description
+        </label>
+
+        <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3"><%= @movie.description %></textarea>
+      </div>
+
+      <!-- Label and input for image_url -->
+      <div class="form-group">
+        <label for="image_url" class="control-label">
+          Image url
+        </label>
+
+        <input type="text" id="image_url" name="image_url" placeholder="Image url" class="form-control" value="<%= @movie.image_url %>">
+      </div>
+
+      <!-- Label and input for director_id -->
+      <!-- <div class="form-group">
+        <label for="director_id" class="control-label">
+          Director
+        </label> -->
+
+        <!-- <input type="text" id="director_id" name="director_id" placeholder="Director" class="form-control" value="<%= @movie.director_id %>"> -->
+
+        <!-- IMPORTANT: added during video ~45min -->
+
+        <!-- <option value=""></option> -->
+        <!-- <% %> -->
+        <!-- <%=  %> -->
+
+        <!-- <select name="director_id" id="" class="form-control">
+        <% Director.all.each do |director| %>
+        <option value="<%=director.id%>"><%= director.name %></option>
+        <% end %>
+      </select> -->
+
+      <!-- First helper method, first: name of the column youre trying to populate in the movie table
+      Next helper method, first: array you want it to draw options for, the thing you want to store ultimately in the original column, thing you want user to see, thing you want to be preselected. -->
+
+      <input type="hidden" name="director_id" value="<%= @director.id %>">
+    </div>
+
+    <button class="btn btn-success">
+      Create Movie
+    </button>
+    or
+    <a href="/movies">Cancel</a>
+  </form>
+</div>
+</div>

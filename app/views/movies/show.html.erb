@@ -24,7 +24,8 @@
       <!-- <dd><%= @movie.director_id %></dd> -->
       <dd>
         <a href="/directors/<%= @movie.director_id %>">
-          <%= Director.find_by(:id => @movie.director_id).name %>
+          <!-- <%= Director.find_by(:id => @movie.director_id).name %> -->
+          <%= @movie.director.name %>
         </a>
       </dd>
 
