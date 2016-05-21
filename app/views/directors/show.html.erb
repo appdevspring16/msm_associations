@@ -19,15 +19,15 @@
       <dd><img src="<%= @director.image_url %>" width="100"></dd>
 
       <dt>Number of movies</dt>
-      <dd><%= Movie.where(:director_id => @director.id).count %></dd>
+      <dd><%= @director.movies.count %></dd>
 
       <dt>Filmography</dt>
       <dd>
         <ul class="list-group">
-          <% Movie.where(:director_id => @director.id).each do |movie| %>
+          <% @director.movies.each do |movie| %>
           <li class="list-group-item"><%= movie.title %>(<%= movie.year %>)</li>
           <% end %>
-          
+
         <li class="list-group-item">
 
           <form action="/create_movie" method="post">

@@ -23,6 +23,59 @@
       <dt>Director</dt>
       <dd><%= @movie.director.name %></dd>
 
+      <dt>Number of characters</dt>
+      <dd><%= @movie.characters.count %></dd>
+
+
+      <dt>Characters</dt>
+      <dd>
+        <ul class="list-group">
+          <% @movie.characters.each do |character| %>
+          <li class="list-group-item"><%= character.name %></li>
+          <% end %>
+
+          <li class="list-group-item">
+
+
+
+
+
+
+
+
+            <form action="/create_character" method="post">
+              <!-- Hidden input for authenticity token to protect from forgery -->
+              <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+              <!-- Label and input for movie_id -->
+              <input type="hidden" name="movie_id" value="<%= @movie.id %>">
+
+
+
+              <button class="btn btn-success">
+                Create Character
+              </button>
+              or
+              <a href="/characters">Cancel</a>
+            </form>
+
+
+
+
+
+
+
+
+
+
+
+
+          </li>
+
+        </ul>
+      </dd>
+
+
     </dl>
 
     <div class="btn-group btn-group-justified">
