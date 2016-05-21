@@ -6,7 +6,6 @@ class DirectorsController < ApplicationController
   def show
     @director = Director.find(params[:id])
     @movie = Movie.new
-    @movie.save
 
   end
 
