@@ -17,16 +17,18 @@
       <dt>Description</dt>
       <dd><%= @movie.description %></dd>
 
-      <dt>Image url</dt>
-      <dd><%= @movie.image_url %></dd>
+      <dt>Image</dt>
+      <dd><img src="<%= @movie.image_url %>"></dd>
 
       <dt>Director</dt>
       <dd>
         <a href="/directors/<%= @movie.director_id %>">
-         <%= Director.find_by(:id => @movie.director_id).name %>
          <%= @movie.director.name %>
        </a>
       </dd>
+
+      <dt>Number of Characters</dt>
+      <dd><%= @movie.characters.count %></dd>
 
     </dl>
 
@@ -46,9 +48,45 @@
 
 
 <ul>
-  <% Character.where(:movie_id => @movie.id).each do |character| %>
+  <% @movie.characters.each do |character| %>
     <li>
-      <%= Actor.find_by(:id => character.actor_id).name %>
+      <%= character.actor.name %>
+      (<%= character.name %>)
     </li>
   <% end %>
 </ul>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_character" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for movie_id -->
+      <div class="form-group">
+        <label for="movie_id" class="control-label">
+          Movie
+        </label>
+        <%= select_tag(:movie_id, options_from_collection_for_select(Movie.all, :id, :title, @movie.id), :class => "form-control")%>
+      </div>
+
+
+      <!-- Label and input for actor_id -->
+      <div class="form-group">
+        <label for="actor_id" class="control-label">
+          Actor
+        </label>
+
+        <%= select_tag(:actor_id, options_from_collection_for_select(Actor.all, :id, :name, @movie.id), :class => "form-control")%>
+      </div>
+
+        <input type="hidden" name="name">
+
+      <button class="btn btn-success">
+        Create Character
+      </button>
+      or
+      <a href="/characters">Cancel</a>
+    </form>
+  </div>
+</div>

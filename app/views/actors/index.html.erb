@@ -12,7 +12,6 @@
         <th>Image</th>
         <th>Name</th>
         <th>Dob</th>
-        <th>Bio</th>
         <th>Actions</th>
       </tr>
 
@@ -21,7 +20,6 @@
         <td><img src="<%= actor.image_url %>"></td>
         <td><%= actor.name %></td>
         <td><%= actor.dob %></td>
-        <td><%= actor.bio %></td>
         <td>
           <a href="/actors/<%= actor.id %>" class="btn btn-primary">Show</a>
           <a href="/actors/<%= actor.id %>/edit" class="btn btn-warning">Edit</a>
