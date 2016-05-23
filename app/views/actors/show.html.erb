@@ -18,7 +18,7 @@
       <dd><img src="<%= @actor.image_url %>"></dd>
 
       <dt>Number of Characters</dt>
-      <dd><%= Character.where(:actor_id => @actor.id).count %></dd>
+      <dd><%= @actor.characters.count %></dd>
 
     </dl>
 
@@ -37,7 +37,7 @@
 </div>
 
 <ul>
-  <% Character.where(:actor_id => @actor.id).each do |character| %>
+  <% @actor.characters.each do |character| %>
     <li>
       <%= character.name %>
       (<%= Movie.find_by(:id => character.movie_id).title %>)
