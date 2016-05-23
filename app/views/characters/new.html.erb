@@ -1,11 +1,11 @@
 <!-- Validation failure messages -->
 <% if @character.errors.any? %>
-  <% @character.errors.full_messages.each do |message| %>
-    <div class="alert alert-dismissable alert-danger">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <%= message %>
-    </div>
-  <% end %>
+<% @character.errors.full_messages.each do |message| %>
+<div class="alert alert-dismissable alert-danger">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <%= message %>
+</div>
+<% end %>
 <% end %>
 
 <div class="page-header">
@@ -23,7 +23,10 @@
         <label for="movie_id" class="control-label">
           Movie
         </label>
-<%= select_tag(:movie_id, options_from_collection_for_select(Movie.all, :id, :title, @character.movie_id), :class => "form-control") %>
+        <%= select_tag(:movie_id, options_from_collection_for_select(Movie.all, :id, :title, @character.movie_id), :class => "form-control") %>
+        <p class="help-block">
+          <a href="/movies/new">or add a new movie</a>
+        </p>
 
       </div>
 
@@ -33,7 +36,10 @@
           Actor
         </label>
 
-  <%= select_tag(:actor_id, options_from_collection_for_select(Actor.all, :id, :name, @character.actor_id), :class => "form-control") %>
+        <%= select_tag(:actor_id, options_from_collection_for_select(Actor.all, :id, :name, @character.actor_id), :class => "form-control") %>
+        <p class="help-block">
+          <a href="/actors/new">or add a new actor</a>
+        </p>
       </div>
 
       <!-- Label and input for name -->
