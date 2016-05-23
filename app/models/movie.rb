@@ -22,4 +22,9 @@ validates :year, :numericality => { :only_integer => true,
 
   # - image_url: no rules
 
+  # movie characters association
+  has_many(:characters, :class_name => "Character", :foreign_key => "movie_id")
+
+  belongs_to(:director, :class_name => "Director", :foreign_key => "director_id")
+
 end
