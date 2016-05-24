@@ -12,7 +12,7 @@
       <dd><%= @actor.dob %></dd>
 
       <dt>Bio</dt>
-      <dd><%= @actor.bio %></dd>
+      <dd><%= truncate(@actor.bio) %></dd>
 
       <dt>Image url</dt>
       <dd><%= @actor.image_url %></dd>
