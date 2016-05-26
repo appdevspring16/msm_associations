@@ -39,11 +39,18 @@
 
 <ul>
 
-<% Movie.where(:director_id => @director.id).each do |movie| %>
+<% @director.movies.each do |movie| %>
   <li><a href="/movies/<%= movie.id %>"><%= movie.title %></a>
 <% end %>
 
 </ul>
+
+<p>
+
+</p>
+<h3><div class="bg-primary text-center">
+  Add a new movie
+</div></h3>
 
 <div class="row">
   <div class="col-md-12">

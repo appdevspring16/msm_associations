@@ -6,4 +6,7 @@ validates :name, :presence => true, :uniqueness => { :scope => :dob }
   # - bio: no rules
   # - image_url: no rules
 
+  has_many :characters
+  has_many :movies, :through => :characters
+
 end
