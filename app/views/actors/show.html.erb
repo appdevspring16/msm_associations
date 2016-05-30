@@ -23,10 +23,11 @@
         <ul class="list-group">
           <% @actor.characters.each do |character| %>
           <li class="list-group-item">
-          <a href="/movies/<%= character.movie_id %>">
-            <%= character.movie.title %>
-          </a>
-          
+            <a href="/movies/<%= character.movie_id %>">
+              <%= character.movie.title %>
+            </a>
+
+            (<%= character.name %>)
           </li>
           <% end %>
         </ul>
