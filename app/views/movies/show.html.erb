@@ -31,11 +31,11 @@
       <dt>Cast</dt>
       <dd>
         <ul class="list-group">
-          <!-- <% Character.where(:movie_id => @movie.id).each do |character| %> -->
+
           <% @movie.characters.each do |character| %>
           <li class="list-group-item">
-            <!-- <%= Actor.find_by(:id => character.actor_id).name %> -->
-
+            <%= character.actor.name %>
+            (<%= character.name %>)
           </li>
           <% end %>
 
