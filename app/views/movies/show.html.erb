@@ -23,16 +23,19 @@
       <dt>Director</dt>
       <dd>
         <a href="/directors/<%= @movie.director_id %>">
-          <%= Director.find_by(:id => @movie.director_id).name %>
+          <!-- <%= Director.find_by(:id => @movie.director_id).name %> -->
+          <%= @movie.director.name %>
         </a>
       </dd>
 
       <dt>Cast</dt>
       <dd>
         <ul class="list-group">
-          <% Character.where(:movie_id => @movie.id).each do |character| %>
+          <!-- <% Character.where(:movie_id => @movie.id).each do |character| %> -->
+          <% @movie.characters.each do |character| %>
           <li class="list-group-item">
-            <%= Character.find_by(:id => character.id).name %>
+            <!-- <%= Actor.find_by(:id => character.actor_id).name %> -->
+
           </li>
           <% end %>
 
