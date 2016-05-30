@@ -18,12 +18,15 @@
       <dd> <img src="<%= @actor.image_url %>"
       </dd>
 
-      <dt>Characters</dt>
+      <dt>Filmography</dt>
       <dd>
         <ul class="list-group">
-          <% Character.where(:actor_id => @actor.id).each do |character| %>
+          <% @actor.characters.each do |character| %>
           <li class="list-group-item">
-            <%= character.name %>
+          <a href="/movies/<%= character.movie_id %>">
+            <%= character.movie.title %>
+          </a>
+          
           </li>
           <% end %>
         </ul>
