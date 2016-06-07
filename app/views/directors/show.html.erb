@@ -1,0 +1,43 @@
+<div class="page-header">
+  <h3>Director #<%= @director.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+      <dt>Name</dt>
+      <dd><%= @director.name %></dd>
+
+      <dt>Dob</dt>
+      <dd><%= @director.dob %></dd>
+
+      <dt>Bio</dt>
+      <dd><%= @director.bio %></dd>
+
+      <dt>Image url</dt>
+      <dd><%= @director.image_url %></dd>
+
+      <dt>Number of films directed</dt>
+      <dd><%= Movie.where(:director_id => @director.id).count %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/directors" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/directors/<%= @director.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_director/<%= @director.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>
+
+<ul>
+   <% Movie.where(:director_id => @director.id).each do |movie| %>
+  <li><a href= "/movies/<%= movie.id %>"><%= movie.title %> </li>
+  <% end %>
+</ul>
