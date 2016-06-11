@@ -32,11 +32,11 @@
 
 
 
-      <dt>Cast
+      <dt>Cast</dt>
       <dd>
         <ul class="list-group">
           <% @movie.characters.each do |character| %>
-          <li class="list-group-item"><a href="/actors/<%= actor.id %>"><%= character.actor %> (<%= character.name %>)</a></li>
+          <li class="list-group-item"><a href="/actors/<%= character.actor.id %>"><%= character.actor.name %> (<%= character.name %>)</a></li>
           <% end %>
         </ul>
         <div class="row">
@@ -51,7 +51,10 @@
                   Actor
                 </label>
 
-                <input type="text" id="actor" name="actor" placeholder="Actor" class="form-control" value="<%= @character.actor %>">
+                <%= select_tag(:actor_id, options_from_collection_for_select(Actor.all, :id, :name), :class => "form-control") %>
+                <p class="help-block">
+                  <a href="/actors/new">or add a new actor</a>
+                </p>
               </div>
 
               <!-- Label and input for year -->
@@ -60,60 +63,58 @@
                   Name
                 </label>
 
-                <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @character.name %>">
+                <input type="text" id="name" name="name" placeholder="Name" class="form-control">
               </div>
 
               <!-- Label and input for director_id -->
               <!-- <div class="form-group">
-                <label for="director_id" class="control-label">
-                  Director
-                </label> -->
+              <label for="director_id" class="control-label">
+              Director
+            </label> -->
 
-                <!-- <input type="text" id="director_id" name="director_id" placeholder="Director" class="form-control" value="<%= @movie.director_id %>"> -->
+            <!-- <input type="text" id="director_id" name="director_id" placeholder="Director" class="form-control" value="<%= @movie.director_id %>"> -->
 
-                <!-- IMPORTANT: added during video ~45min -->
+            <!-- IMPORTANT: added during video ~45min -->
 
-                <!-- <option value=""></option> -->
-                <!-- <% %> -->
-                <!-- <%=  %> -->
+            <!-- <option value=""></option> -->
+            <!-- <% %> -->
+            <!-- <%=  %> -->
 
-                <!-- <select name="director_id" id="" class="form-control">
-                <% Director.all.each do |director| %>
-                <option value="<%=director.id%>"><%= director.name %></option>
-                <% end %>
-              </select> -->
+            <!-- <select name="director_id" id="" class="form-control">
+            <% Director.all.each do |director| %>
+            <option value="<%=director.id%>"><%= director.name %></option>
+            <% end %>
+          </select> -->
 
-              <!-- First helper method, first: name of the column youre trying to populate in the movie table
-              Next helper method, first: array you want it to draw options for, the thing you want to store ultimately in the original column, thing you want user to see, thing you want to be preselected. -->
+          <!-- First helper method, first: name of the column youre trying to populate in the movie table
+          Next helper method, first: array you want it to draw options for, the thing you want to store ultimately in the original column, thing you want user to see, thing you want to be preselected. -->
 
-              <input type="hidden" name="character_id" value="<%= @character.id %>">
-            </div>
 
-            <button class="btn btn-success">
-              Create Character
-            </button>
-            or
-            <a href="/movies">Cancel</a>
-          </form>
         </div>
 
-
-      </dd>
-      </dt>
-
-
-    </dl>
-
-    <div class="btn-group btn-group-justified">
-      <a href="/movies" class="btn btn-primary">
-        Back
-      </a>
-      <a href="/movies/<%= @movie.id %>/edit" class="btn btn-warning">
-        Edit
-      </a>
-      <a href="/delete_movie/<%= @movie.id %>" class="btn btn-danger" rel="nofollow">
-        Delete
-      </a>
+        <button class="btn btn-success">
+          Create Character
+        </button>
+      </form>
     </div>
-  </div>
+
+
+  </dd>
+</dt>
+
+
+</dl>
+
+<div class="btn-group btn-group-justified">
+  <a href="/movies" class="btn btn-primary">
+    Back
+  </a>
+  <a href="/movies/<%= @movie.id %>/edit" class="btn btn-warning">
+    Edit
+  </a>
+  <a href="/delete_movie/<%= @movie.id %>" class="btn btn-danger" rel="nofollow">
+    Delete
+  </a>
+</div>
+</div>
 </div>

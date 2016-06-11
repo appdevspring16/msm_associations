@@ -23,6 +23,7 @@
         <label for="movie_id" class="control-label">
           Movie
         </label>
+
         <%= select_tag(:movie_id, options_from_collection_for_select(Movie.all, :id, :title, @character.movie_id), :class => "form-control") %>
         <p class="help-block">
           <a href="/movies/new">or add a new movie</a>
@@ -34,6 +35,7 @@
         <label for="actor_id" class="control-label">
           Actor
         </label>
+
         <%= select_tag(:actor_id, options_from_collection_for_select(Actor.all, :id, :name, @character.actor_id), :class => "form-control") %>
         <p class="help-block">
           <a href="/actors/new">or add a new actor</a>
